@@ -21,84 +21,82 @@ yesnoprompt(){
 }
 
 update() {
-	pprint "\n\nUpdating package list.. "
+	pprint "\n\nMemperbarui daftar paket.. "
 	sudo apt update 2>&1 | grep "can be upgraded" &>/dev/null
 	if [ $? -eq 0 ]; then
-		pprint "UPDATE AVAILABLE" "cgreen"
-		pprint "\n\nDo you want to automatically upgrade (y/n)?"
+		pprint "PEMBARUAN TERSEDIA" "cgreen"
+		pprint "\n\nApakah Anda ingin memperbarui secara otomatis (y/n)?"
 		if yesnoprompt; then
-			pprint "\n\nUpgrading packages.. "
+			pprint "\n\nMemperbarui paket.. "
 			sudo apt upgrade -y &>/dev/null &&
-			pprint "DONE!\n\n" "cgreen" || (pprint "FAIL.\n\n" "cred"; exit 1)
+			pprint "SELESAI!\n\n" "cgreen" || (pprint "GAGAL.\n\n" "cred"; exit 1)
 		else
 			echo
 		fi
 	else
-		pprint "ALREADY UP TO DATE\n\n" "cgreen"
+		pprint "SUDAH TERBARu\n\n" "cgreen"
 	fi
 }
 
 packages(){
 	if ! command -v pip &>/dev/null; then
-		pprint "Couldn't found pip, installing now..."
+		pprint "Tidak dapat menemukan pip, menginstal sekarang..."
 		sudo apt install python3-pip -y 2>pypilog.txt 1>/dev/null &&
-		pprint "SUCCESS.\n\n" "cgreen" || (pprint "FAIL.\n\n" "cred"; exit 1)
+		pprint "SUKSES.\n\n" "cgreen" || (pprint "GAGAL.\n\n" "cred"; exit 1)
 	fi
 
 	if ! command -v ffmpeg &>/dev/null; then
-		pprint "Couldn't found ffmpeg, installing now..."
+		pprint "Tidak dapat menemukan ffmpeg, menginstal sekarang..."
 		if sudo apt install ffmpeg -y &>/dev/null;then
-			pprint "SUCCESS.\n\n" "cgreen"
+			pprint "SUKSES.\n\n" "cgreen"
 		else
-			pprint "FAIL.\n\n" "cred"
-			pprint "You need to install ffmpeg manually in order to deploy BrandrdXMusic, exiting...\n" "cblue"
+			pprint "GAGAL.\n\n" "cred"
+			pprint "Anda perlu menginstal ffmpeg secara manual untuk menjalankan DeltaMusic, keluar...\n" "cblue"
 			exit 1
 		fi
 	fi
 
 	# Check ffmpeg version and warn user if necessary.
 	fv=$(grep -Po 'version (3.*?) ' <<< $(ffmpeg -version)) &&
-	pprint "Playing live streams not going to work since you have ffmpeg $fv, live streams are supported by version 4+.\n" "cblue"
+	pprint "Memutar streaming langsung tidak akan berfungsi karena Anda memiliki ffmpeg $fv, streaming langsung didukung oleh versi 4+.\n" "cblue"
 }
-
 
 node(){
 	command -v npm &>/dev/null && return
-	pprint "Installing Nodejs and Npm..  "
+	pprint "Menginstal Nodejs dan Npm..  "
 	curl -fssL https://deb.nodesource.com/setup_19.x | sudo -E bash - &>nodelog.txt &&
 	sudo apt install -y nodejs &>>nodelog.txt &&
 	sudo npm i -g npm &>>nodelog.txt &&
-	pprint "SUCCESS!\n" "cgreen" || (pprint "FAIL.\n" "cred"; exit 1)
+	pprint "SUKSES!\n" "cgreen" || (pprint "GAGAL.\n" "cred"; exit 1)
 }
 
-
 installation(){
-	pprint "\n\nUpgrading pip and installing dependency packages..."
+	pprint "\n\nMemperbarui pip dan menginstal paket dependensi..."
 	pip3 install -U pip &>>pypilog.txt &&
 	pip3 install -U -r requirements.txt &>>pypilog.txt &&
-	pprint "DONE.\n" "cgreen" && return
-	pprint "FAIL.\n" "cred"
+	pprint "SELESAI.\n" "cgreen" && return
+	pprint "GAGAL.\n" "cred"
 	exit 1
 }
 
 clear
-pprint "Welcome to BrandrdXMusic Setup Installer\n\n"
-pprint "If you see any error during Installation Process, Please refer to these files for logs: "
-pprint "\nFor node js errors , Checkout nodelog.txt"
-pprint "\nFor pypi packages errors , Checkout pypilog.txt"
+pprint "Selamat datang di Penginstal Setup DeltaMusic\n\n"
+pprint "Jika Anda melihat kesalahan selama Proses Instalasi, silakan lihat file-file ini untuk log: "
+pprint "\nUntuk kesalahan node js, periksa nodelog.txt"
+pprint "\nUntuk kesalahan paket pypi, periksa pypilog.txt"
 sleep 1
-pprint "\n\nScript needs sudo privileges in order to update & install packages.\n"
+pprint "\n\nScript memerlukan hak sudo untuk memperbarui & menginstal paket.\n"
 sudo test
 
 update
 packages
 node
 installation
-pprint "\n\n\n\n\nWCGKING Installation Completed !" "cgreen"
+pprint "\n\n\n\n\nInstalasi DeltaMusic Selesai!" "cgreen"
 sleep 1
 clear
 
-pprint "\nEnter Your Values Below\n\n\n"
+pprint "\nMasukkan Nilai Anda di Bawah Ini\n\n\n"
 pprint "API ID: "; color_reset; read api_id
 pprint "\nAPI HASH: "; color_reset; read api_hash
 pprint "\nBOT TOKEN: "; color_reset; read bot_token
@@ -107,7 +105,7 @@ pprint "\nMONGO DB URI: "; color_reset; read mongo_db
 pprint "\nLOG GROUP ID: "; color_reset; read logger
 pprint "\nSTRING SESSION: "; color_reset; read string_session
 
-pprint "\n\nProcessing your vars, wait a while !" "cgreen"
+pprint "\n\nMemproses variabel Anda, tunggu sebentar!" "cgreen"
 
 if [ -f .env ]; then
 	rm .env
@@ -122,5 +120,5 @@ STRING_SESSION = $string_session
 OWNER_ID = $ownid""" > .env
 clear
 
-pprint "\n\n\nThanks for using BrandrdXMusic installer, your vars have been saved successfully ! \nIf you wanna add more variables add them in your env by : vi .env"
-pprint "\n\nNow you can start the bot by : bash start\n\n"
+pprint "\n\n\nTerima kasih telah menggunakan penginstal DeltaMusic, variabel Anda telah disimpan dengan sukses! \nJika Anda ingin menambahkan lebih banyak variabel, tambahkan di env Anda dengan: vi .env"
+pprint "\n\nSekarang Anda dapat memulai bot dengan: bash start\n\n"
