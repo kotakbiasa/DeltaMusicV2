@@ -1,8 +1,8 @@
-from BrandrdXMusic.core.bot import Hotty
-from BrandrdXMusic.core.dir import dirr
-from BrandrdXMusic.core.git import git
-from BrandrdXMusic.core.userbot import Userbot
-from BrandrdXMusic.misc import dbb, heroku
+from DeltaMusic.core.bot import Hotty
+from DeltaMusic.core.dir import dirr
+from DeltaMusic.core.git import git
+from DeltaMusic.core.userbot import Userbot
+from DeltaMusic.misc import dbb, heroku
 
 from SafoneAPI import SafoneAPI
 from .logging import LOGGER
