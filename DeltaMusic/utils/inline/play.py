@@ -3,7 +3,7 @@ import math
 from pyrogram.types import InlineKeyboardButton
 
 from DeltaStream.utils.formatters import time_to_seconds
-from DeltaStream import app
+from DeltaMusic import app
 
 def track_markup(_, videoid, user_id, channel, fplay):
     buttons = [
