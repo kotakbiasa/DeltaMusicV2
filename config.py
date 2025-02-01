@@ -35,7 +35,7 @@ HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/WCGKING/DeltaMusic",
+    "https://github.com/kotakbiasa/DeltaMusicV2",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 GIT_TOKEN = getenv(
@@ -43,7 +43,7 @@ GIT_TOKEN = getenv(
 )  # Fill this variable if your upstream repository is private
 
 SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/KotakBiasaCH")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/DeltaStreamCH")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/DeltaStreamChat")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
@@ -89,21 +89,21 @@ confirmer = {}
 
 
 START_IMG_URL = getenv(
-    "START_IMG_URL", "https://te.legra.ph/file/62c76ac2095332a0ede75.jpg"
+    "START_IMG_URL", "https://envs.sh/mt2.jpg"
 )
 PING_IMG_URL = getenv(
-    "PING_IMG_URL", "https://te.legra.ph/file/4f59fb748e1990acfa297.jpg"
+    "PING_IMG_URL", "https://envs.sh/mte.jpg"
 )
-PLAYLIST_IMG_URL = "https://te.legra.ph/file/14eb59ea7d31229d8d751.jpg"
-STATS_IMG_URL = "https://te.legra.ph/file/4310ea5f523520b2b765b.jpg"
-TELEGRAM_AUDIO_URL = "https://te.legra.ph/file/923c1faac33d8c70335dc.jpg"
-TELEGRAM_VIDEO_URL = "https://te.legra.ph/file/6c66f8b192532fe758e82.jpg"
-STREAM_IMG_URL = "https://te.legra.ph/file/ebc4dc6357be06e08a3ed.jpg"
-SOUNCLOUD_IMG_URL = "https://te.legra.ph/file/d339f390ec168c19879c6.jpg"
-YOUTUBE_IMG_URL = "https://te.legra.ph/file/ee0cd53ab73f08f4a3627.jpg"
-SPOTIFY_ARTIST_IMG_URL = "https://te.legra.ph/file/5f9fb5bba66021c782d96.jpg"
-SPOTIFY_ALBUM_IMG_URL = "https://te.legra.ph/file/affe0afec5c7ad63676a4.jpg"
-SPOTIFY_PLAYLIST_IMG_URL = "https://te.legra.ph/file/3c446e8dee78ed0ca62ff.jpg"
+PLAYLIST_IMG_URL = "https://envs.sh/mtb.jpg"
+STATS_IMG_URL = "https://envs.sh/mtF.jpg"
+TELEGRAM_AUDIO_URL = "https://envs.sh/mt2.jpg"
+TELEGRAM_VIDEO_URL = "https://envs.sh/mtt.jpg"
+STREAM_IMG_URL = "https://envs.sh/mti.jpg"
+SOUNCLOUD_IMG_URL = "https://envs.sh/mtw.jpg"
+YOUTUBE_IMG_URL = "https://envs.sh/mtP.jpg"
+SPOTIFY_ARTIST_IMG_URL = "https://envs.sh/mtg.jpg"
+SPOTIFY_ALBUM_IMG_URL = "https://envs.sh/mtf.jpg"
+SPOTIFY_PLAYLIST_IMG_URL = "https://envs.sh/mta.jpg"
 
 
 def time_to_seconds(time):
