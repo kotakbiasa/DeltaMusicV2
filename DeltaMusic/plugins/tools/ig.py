@@ -30,3 +30,4 @@ __MODULE__ = "Instagram"
 __HELP__ = """/reel [URL reel Instagram] - Untuk mengunduh reel dengan bot
 /ig [URL reel Instagram] - Untuk mengunduh reel dengan bot
 /instagram [URL reel Instagram] - Untuk mengunduh reel dengan bot
+"""
