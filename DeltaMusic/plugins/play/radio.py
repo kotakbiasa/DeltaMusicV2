@@ -8,7 +8,7 @@ from pyrogram.errors import (
     UserAlreadyParticipant,
     UserNotParticipant,
 )
-from pyrogram.types import Message
+from pyrogram.types import Message, InlineQueryResultArticle, InputTextMessageContent
 
 from config import BANNED_USERS, adminlist
 from strings import get_string
@@ -331,6 +331,41 @@ async def tv(client, message: Message):
         await message.reply(
             f"Berikan saya nama stasiun untuk memutar TV\nBerikut adalah beberapa nama stasiun:\n{valid_tv_stations}"
         )
+
+
+@app.on_inline_query()
+async def inline_query_handler(client, inline_query):
+    query = inline_query.query.lower()
+    results = []
+
+    if query.startswith("radio "):
+        station_name = query.split(" ", 1)[1]
+        RADIO_URL = RADIO_STATION.get(station_name)
+        if RADIO_URL:
+            results.append(
+                InlineQueryResultArticle(
+                    title=f"Play Radio: {station_name}",
+                    input_message_content=InputTextMessageContent(
+                        f"/radio {station_name}"
+                    ),
+                    description=f"Play {station_name} radio station",
+                )
+            )
+    elif query.startswith("tv "):
+        station_name = query.split(" ", 1)[1]
+        TV_URL = TV_STATION.get(station_name)
+        if TV_URL:
+            results.append(
+                InlineQueryResultArticle(
+                    title=f"Play TV: {station_name}",
+                    input_message_content=InputTextMessageContent(
+                        f"/tv {station_name}"
+                    ),
+                    description=f"Play {station_name} TV station",
+                )
+            )
+
+    await inline_query.answer(results, cache_time=1, is_personal=True, switch_pm_text="Close", switch_pm_parameter="close")
 
 
 __MODULE__ = "Radio dan TV"
