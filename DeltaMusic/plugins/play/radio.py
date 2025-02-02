@@ -346,7 +346,7 @@ async def inline_query_handler(client, inline_query):
                 InlineQueryResultArticle(
                     title=f"Play Radio: {station_name}",
                     input_message_content=InputTextMessageContent(
-                        f"/radio {station_name}"
+                        message_text=f"/radio {station_name}"
                     ),
                     description=f"Play {station_name} radio station",
                 )
@@ -359,7 +359,7 @@ async def inline_query_handler(client, inline_query):
                 InlineQueryResultArticle(
                     title=f"Play TV: {station_name}",
                     input_message_content=InputTextMessageContent(
-                        f"/tv {station_name}"
+                        message_text=f"/tv {station_name}"
                     ),
                     description=f"Play {station_name} TV station",
                 )
