@@ -70,26 +70,13 @@ async def settings_cb(client, CallbackQuery, _):
     except:
         pass
     buttons = setting_markup(_)
-    text = ""  # Initialize text to avoid UnboundLocalError
-    try:
-        text = _["setting_1"].format(
+    return await CallbackQuery.edit_message_text(
+        _["setting_1"].format(
             CallbackQuery.message.chat.title,
             CallbackQuery.message.chat.id,
-        )
-    except IndexError as e:
-        print(f"Error formatting string: {e}")
-    if text:
-        return await CallbackQuery.edit_message_text(
-            text,
-            reply_markup=InlineKeyboardMarkup(buttons),
-        )
-    if CallbackQuery.data == "back":
-        # Handle the "back" button callback
-        await CallbackQuery.message.edit_text(
-            text=_["back_message"],  # Replace with the actual message for the "back" button
-            reply_markup=back_markup  # Replace with the actual markup for the "back" button
-        )
-        return
+        ),
+        reply_markup=InlineKeyboardMarkup(buttons),
+    )
 
 
 @app.on_callback_query(filters.regex("settingsback_helper") & ~BANNED_USERS)
@@ -113,7 +100,11 @@ async def settings_back_markup(client, CallbackQuery: CallbackQuery, _):
         )
     else:
         buttons = setting_markup(_)
-        return await CallbackQuery.edit_message_reply_markup(
+        return await CallbackQuery.edit_message_text(
+            _["setting_1"].format(
+                CallbackQuery.message.chat.title,
+                CallbackQuery.message.chat.id,
+            ),
             reply_markup=InlineKeyboardMarkup(buttons)
         )
 
