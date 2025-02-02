@@ -197,7 +197,7 @@ async def radio(client, message: Message):
     filters.command(["tvplayforce", "tv", "ctv"])
     & filters.group
     & ~BANNED_USERS
-    | filters.inline_query
+    | filters.InlineQuery
 )
 async def tv(client, message: Message):
     msg = await message.reply_text("Tunggu sebentar....")
