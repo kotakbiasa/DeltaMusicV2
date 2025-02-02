@@ -68,6 +68,7 @@ async def radio_station_callback(client, callback_query):
     RADIO_URL = RADIO_STATION.get(station_name)
     if RADIO_URL:
         await callback_query.answer()  # Answer the callback query first
+        await callback_query.message.edit_reply_markup(reply_markup=None)  # Auto close inline keyboard
         language = await get_lang(callback_query.message.chat.id)
         _ = get_string(language)
         playmode = await get_playmode(callback_query.message.chat.id)
@@ -113,6 +114,7 @@ async def tv_station_callback(client, callback_query):
     TV_URL = TV_STATION.get(station_name)
     if TV_URL:
         await callback_query.answer()  # Answer the callback query first
+        await callback_query.message.edit_reply_markup(reply_markup=None)  # Auto close inline keyboard
         language = await get_lang(callback_query.message.chat.id)
         _ = get_string(language)
         playmode = await get_playmode(callback_query.message.chat.id)
@@ -295,6 +297,7 @@ async def radio_station_callback(client, callback_query):
     RADIO_URL = RADIO_STATION.get(station_name)
     if RADIO_URL:
         await callback_query.answer()  # Answer the callback query first
+        await callback_query.message.edit_reply_markup(reply_markup=None)  # Auto close inline keyboard
         language = await get_lang(callback_query.message.chat.id)
         _ = get_string(language)
         playmode = await get_playmode(callback_query.message.chat.id)
@@ -340,6 +343,7 @@ async def tv_station_callback(client, callback_query):
     TV_URL = TV_STATION.get(station_name)
     if TV_URL:
         await callback_query.answer()  # Answer the callback query first
+        await callback_query.message.edit_reply_markup(reply_markup=None)  # Auto close inline keyboard
         language = await get_lang(callback_query.message.chat.id)
         _ = get_string(language)
         playmode = await get_playmode(callback_query.message.chat.id)
