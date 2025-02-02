@@ -175,7 +175,7 @@ song_9 : "Gagal mengunduh lagu dari yt-dl\n\n**Alasan:** {0}"
 song_10 : "Gagal mengunggah ke server Telegram."
 song_11 : "Pengunggahan dimulai\n\nSilakan tunggu..."
 
-play_1 : "✨ Memproses....🥀"
+play_1 : "✨ Memproses...."
 play_2 : "<b>Mode Pemutaran Channel</b>\n\nMemproses, silakan tunggu...\n\n<b>Channel yang Terhubung:</b> {0}"
 play_3 : "» Gagal memproses permintaan."
 play_4 : "<b>Hanya Admin yang Dapat Memutar</b>\nHanya admin grup ini yang diizinkan memutar\n\nUbah mode putar via /playmode"

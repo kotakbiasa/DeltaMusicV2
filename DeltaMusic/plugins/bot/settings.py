@@ -70,11 +70,15 @@ async def settings_cb(client, CallbackQuery, _):
     except:
         pass
     buttons = setting_markup(_)
-    return await CallbackQuery.edit_message_text(
-        _["setting_1"].format(
+    try:
+        text = _["setting_1"].format(
             CallbackQuery.message.chat.title,
             CallbackQuery.message.chat.id,
-        ),
+        )
+    except IndexError as e:
+        print(f"Error formatting string: {e}")
+    return await CallbackQuery.edit_message_text(
+        text,
         reply_markup=InlineKeyboardMarkup(buttons),
     )
 
