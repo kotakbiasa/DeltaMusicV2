@@ -1,6 +1,6 @@
 import asyncio
 
-import speedtest
+from speedtest import Speedtest
 from pyrogram import filters
 from pyrogram.types import Message
 
@@ -11,7 +11,7 @@ from DeltaMusic.utils.decorators.language import language
 
 def testspeed(m, _):
     try:
-        test = speedtest.Speedtest()
+        test = Speedtest()
         test.get_best_server()
         m = m.edit_text(_["server_12"])
         test.download()
