@@ -1,13 +1,17 @@
 FROM nikolaik/python-nodejs:python3.10-nodejs19
 
-RUN apt-get update \
+RUN apt-get update -y \
     && apt-get install -y --no-install-recommends ffmpeg \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-COPY . /app/
-WORKDIR /app/
-RUN python3 -m pip install --upgrade pip setuptools
-RUN pip3 install --no-cache-dir --upgrade --requirement requirements.txt
+WORKDIR /app
 
-CMD python3 -m DeltaMusic
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -U pip \
+    && pip install --no-cache-dir -U -r requirements.txt
+
+COPY . .
+
+CMD ["bash", "start"]
