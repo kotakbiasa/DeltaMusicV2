@@ -112,30 +112,35 @@ async def check_playlist(client, message: Message, _):
         user_command_count[user_id] = 1
         user_last_message_time[user_id] = current_time
 
-    _playlist = await get_playlist_names(message.from_user.id)
-    if _playlist:
-        get = await message.reply_text(_["playlist_2"])
-    else:
-        return await message.reply_text(_["playlist_3"])
-    msg = _["playlist_4"]
-    count = 0
-    for shikhar in _playlist:
-        _note = await get_playlist(message.from_user.id, shikhar)
-        title = _note["title"]
-        title = title.title()
-        duration = _note["duration"]
-        count += 1
-        msg += f"\n\n{count}- {title[:70]}\n"
-        msg += _["playlist_5"].format(duration)
-    link = await HottyBin(msg)
-    lines = msg.count("\n")
-    if lines >= 17:
-        car = os.linesep.join(msg.split(os.linesep)[:17])
-    else:
-        car = msg
-    carbon = await Carbon.generate(car, randint(100, 10000000000))
-    await get.delete()
-    await message.reply_photo(carbon, caption=_["playlist_15"].format(link))
+    try:
+        _playlist = await get_playlist_names(message.from_user.id)
+        if _playlist:
+            get = await message.reply_text(_["playlist_2"])
+        else:
+            return await message.reply_text(_["playlist_3"])
+        msg = _["playlist_4"]
+        count = 0
+        for shikhar in _playlist:
+            _note = await get_playlist(message.from_user.id, shikhar)
+            title = _note["title"]
+            title = title.title()
+            duration = _note["duration"]
+            count += 1
+            msg += f"\n\n{count}- {title[:70]}\n"
+            msg += _["playlist_5"].format(duration)
+        link = await HottyBin(msg)
+        lines = msg.count("\n")
+        if lines >= 17:
+            car = os.linesep.join(msg.split(os.linesep)[:17])
+        else:
+            car = msg
+        carbon = await Carbon.generate(car, randint(100, 10000000000))
+        await get.delete()
+        await message.reply_photo(carbon, caption=_["playlist_15"].format(link))
+    except FloodWait as e:
+        print(f"Flood wait of {e.x} seconds required")
+        await asyncio.sleep(e.x)
+        return await check_playlist(client, message, _)
 
 
 async def get_keyboard(_, user_id):
@@ -830,3 +835,5 @@ async def del_back_playlist(client, CallbackQuery, _):
     return await CallbackQuery.edit_message_text(
         _["playlist_7"].format(count), reply_markup=keyboard
     )
+```
+

@@ -1,6 +1,8 @@
 from strings import get_string
 from DeltaMusic.misc import SUDOERS
 from DeltaMusic.utils.database import get_lang, is_maintenance
+from pyrogram.errors import FloodWait
+import asyncio
 
 
 def language(mystic):
@@ -21,7 +23,15 @@ def language(mystic):
             language = get_string(language)
         except:
             language = get_string("en")
-        return await mystic(_, message, language)
+        return await wrapper_with_retry(_, message, language)
+
+    async def wrapper_with_retry(_, message, language):
+        try:
+            return await mystic(_, message, language)
+        except FloodWait as e:
+            print(f"Flood wait of {e.x} seconds required")
+            await asyncio.sleep(e.x)
+            return await wrapper_with_retry(_, message, language)
 
     return wrapper
 
@@ -39,7 +49,15 @@ def languageCB(mystic):
             language = get_string(language)
         except:
             language = get_string("en")
-        return await mystic(_, CallbackQuery, language)
+        return await wrapper_with_retry(_, CallbackQuery, language)
+
+    async def wrapper_with_retry(_, CallbackQuery, language):
+        try:
+            return await mystic(_, CallbackQuery, language)
+        except FloodWait as e:
+            print(f"Flood wait of {e.x} seconds required")
+            await asyncio.sleep(e.x)
+            return await wrapper_with_retry(_, CallbackQuery, language)
 
     return wrapper
 
@@ -51,6 +69,14 @@ def LanguageStart(mystic):
             language = get_string(language)
         except:
             language = get_string("en")
-        return await mystic(_, message, language)
+        return await wrapper_with_retry(_, message, language)
+
+    async def wrapper_with_retry(_, message, language):
+        try:
+            return await mystic(_, message, language)
+        except FloodWait as e:
+            print(f"Flood wait of {e.x} seconds required")
+            await asyncio.sleep(e.x)
+            return await wrapper_with_retry(_, message, language)
 
     return wrapper

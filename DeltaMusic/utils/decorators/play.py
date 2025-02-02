@@ -1,4 +1,5 @@
 import asyncio
+import pyrogram
 
 from pyrogram.enums import ChatMemberStatus
 from pyrogram.errors import (
@@ -73,11 +74,14 @@ def PlayWrapper(command):
                 if "stream" in message.command:
                     return await message.reply_text(_["str_1"])
                 buttons = botplaylist_markup(_)
-                return await message.reply_photo(
-                    photo=PLAYLIST_IMG_URL,
-                    caption=_["playlist_1"],
-                    reply_markup=InlineKeyboardMarkup(buttons),
-                )
+                try:
+                    return await message.reply_photo(
+                        photo=PLAYLIST_IMG_URL,
+                        caption=_["playlist_1"],
+                        reply_markup=InlineKeyboardMarkup(buttons),
+                    )
+                except pyrogram.errors.exceptions.bad_request_400.TopicClosed:
+                    return await message.reply_text("Error: The topic was closed.")
         if message.command[0][0] == "c":
             chat_id = await get_cmode(message.chat.id)
             if chat_id is None:
@@ -242,11 +246,14 @@ def CPlayWrapper(command):
                 if "stream" in message.command:
                     return await message.reply_text(_["str_1"])
                 buttons = botplaylist_markup(_)
-                return await message.reply_photo(
-                    photo=PLAYLIST_IMG_URL,
-                    caption=_["play_18"],
-                    reply_markup=InlineKeyboardMarkup(buttons),
-                )
+                try:
+                    return await message.reply_photo(
+                        photo=PLAYLIST_IMG_URL,
+                        caption=_["play_18"],
+                        reply_markup=InlineKeyboardMarkup(buttons),
+                    )
+                except pyrogram.errors.exceptions.bad_request_400.TopicClosed:
+                    return await message.reply_text("Error: The topic was closed.")
         if message.command[0][0] == "c":
             chat_id = await get_cmode(message.chat.id)
             if chat_id is None:
