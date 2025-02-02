@@ -74,6 +74,7 @@ async def settings_cb(client, CallbackQuery, _):
         _["setting_1"].format(
             CallbackQuery.message.chat.title,
             CallbackQuery.message.chat.id,
+            app.mention  # Ensure the number of arguments matches the placeholders in the format string
         ),
         reply_markup=InlineKeyboardMarkup(buttons),
     )
@@ -87,7 +88,13 @@ async def settings_back_markup(client, CallbackQuery: CallbackQuery, _):
     except:
         pass
     if CallbackQuery.message.chat.type == ChatType.PRIVATE:
-        await app.resolve_peer(OWNER_ID)
+        try:
+            await app.resolve_peer(OWNER_ID)
+        except Exception as e:
+            print(f"Error resolving username: {e}")
+            return await CallbackQuery.message.edit_text(
+                "Error resolving username. Please try again later."
+            )
         OWNER = OWNER_ID
         buttons = private_panel(_)
         return await CallbackQuery.edit_message_media(
