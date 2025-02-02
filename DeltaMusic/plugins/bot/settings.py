@@ -83,6 +83,13 @@ async def settings_cb(client, CallbackQuery, _):
             text,
             reply_markup=InlineKeyboardMarkup(buttons),
         )
+    if CallbackQuery.data == "back":
+        # Handle the "back" button callback
+        await CallbackQuery.message.edit_text(
+            text=_["back_message"],  # Replace with the actual message for the "back" button
+            reply_markup=back_markup  # Replace with the actual markup for the "back" button
+        )
+        return
 
 
 @app.on_callback_query(filters.regex("settingsback_helper") & ~BANNED_USERS)
