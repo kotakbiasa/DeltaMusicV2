@@ -336,7 +336,27 @@ async def inline_query_handler(client, inline_query):
     query = inline_query.query.lower()
     results = []
 
-    if query.startswith("radio "):
+    if query == "radio list":
+        results.append(
+            InlineQueryResultArticle(
+                title="List Radio Stations",
+                input_message_content=InputTextMessageContent(
+                    message_text=f"Available radio stations:\n{valid_stations}"
+                ),
+                description="List all available radio stations",
+            )
+        )
+    elif query == "tv list":
+        results.append(
+            InlineQueryResultArticle(
+                title="List TV Stations",
+                input_message_content=InputTextMessageContent(
+                    message_text=f"Available TV stations:\n{valid_tv_stations}"
+                ),
+                description="List all available TV stations",
+            )
+        )
+    elif query.startswith("radio "):
         station_name = query.split(" ", 1)[1]
         RADIO_URL = RADIO_STATION.get(station_name)
         if RADIO_URL:
