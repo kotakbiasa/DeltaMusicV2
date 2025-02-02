@@ -57,7 +57,6 @@ valid_tv_stations = "\n".join([f"`{name}`" for name in sorted(TV_STATION.keys())
     filters.command(["radioplayforce", "radio", "cradio"])
     & filters.group
     & ~BANNED_USERS
-    | filters.inline_query
 )
 async def radio(client, message: Message):
     msg = await message.reply_text("Tunggu sebentar....")
@@ -197,7 +196,6 @@ async def radio(client, message: Message):
     filters.command(["tvplayforce", "tv", "ctv"])
     & filters.group
     & ~BANNED_USERS
-    | filters.inline_query
 )
 async def tv(client, message: Message):
     msg = await message.reply_text("Tunggu sebentar....")
@@ -333,7 +331,7 @@ async def tv(client, message: Message):
         )
 
 
-@app.on_inline_query()
+@app.on_inline_query(filters.InlineQuery)
 async def inline_query_handler(client, inline_query):
     query = inline_query.query.lower()
     results = []
