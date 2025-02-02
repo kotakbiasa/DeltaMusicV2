@@ -835,5 +835,4 @@ async def del_back_playlist(client, CallbackQuery, _):
     return await CallbackQuery.edit_message_text(
         _["playlist_7"].format(count), reply_markup=keyboard
     )
-```
 
