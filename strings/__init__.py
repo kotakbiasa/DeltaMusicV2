@@ -27,8 +27,14 @@ for filename in os.listdir(r"./strings/langs/"):
         for item in languages["id"]:
             if item not in languages[language_name]:
                 languages[language_name][item] = languages["id"][item]
-    try:
-        languages_present[language_name] = languages[language_name]["name"]
-    except:
-        print("Ada masalah dengan file bahasa di dalam bot.")
-        exit()
+        try:
+            languages_present[language_name] = languages[language_name]["name"]
+        except:
+            print("Ada masalah dengan file bahasa di dalam bot.")
+            exit()
+    # Ensure 'en' language is loaded
+    if "en" not in languages:
+        languages["en"] = yaml.safe_load(
+            open(r"./strings/langs/en.yml", encoding="utf8")
+        )
+        languages_present["en"] = languages["en"]["name"]
