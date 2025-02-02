@@ -336,6 +336,9 @@ async def inline_query_handler(client, inline_query):
     query = inline_query.query.lower()
     results = []
 
+    if not query:
+        return
+
     if query == "radio list":
         results.append(
             InlineQueryResultArticle(
