@@ -13,7 +13,7 @@ from pyrogram.errors import MessageTooLong
 from pyrogram.types import Message
 
 from DeltaMusic import app
-from DeltaMusic.core import pyro_cooldown
+from DeltaMusic.utils import pyro_cooldown
 from DeltaMusic.utils.helper import check_time_gap, post_to_telegraph, use_chat_lang
 from config import COMMAND_HANDLER, GOOGLEAI_KEY, OPENAI_KEY, OWNER_ID, SUDO
 

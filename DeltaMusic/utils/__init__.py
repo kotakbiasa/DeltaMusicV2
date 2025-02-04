@@ -5,4 +5,5 @@ from .extraction import *
 from .formatters import *
 from .inline import *
 from .pastebin import *
+from .pyro_progress import *
 from .sys import *

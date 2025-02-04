@@ -1,55 +1,10 @@
-import asyncio
-
-from pyrogram import Client, errors, filters
+from pyrogram import Client, errors
 from pyrogram.enums import ChatMemberStatus, ParseMode
-from pyrogram.errors import MessageDeleteForbidden
 
 import config
 
 from ..logging import LOGGER
 
-data = {}
-
-async def task(msg, warn=False, sec=None):
-    if warn:
-        user = msg.from_user or msg.sender_chat
-        ids = await msg.reply(
-            f"Maaf {user.mention if msg.from_user else msg.sender_chat.title} [<code>{user.id}</code>], Anda harus menunggu selama {sec} detik sebelum menggunakan fitur ini lagi.."
-        )
-        try:
-            await msg.delete()
-        except MessageDeleteForbidden:
-            pass
-        await asyncio.sleep(sec)
-        await ids.edit(
-            f"Baiklah {user.mention if msg.from_user else msg.sender_chat.title} [<code>{user.id}</code>], waktu tunggu Anda telah berakhir, Anda dapat menggunakan perintah lagi.",
-            del_in=3,
-        )
-
-def wait(sec):
-    async def ___(flt, _, msg):
-        user_id = msg.from_user.id if msg.from_user else msg.sender_chat.id
-        if user_id in config.SUDO or user_id == config.OWNER_ID:
-            return True
-        if user_id in data:
-            if msg.date.timestamp() >= data[user_id]["timestamp"] + flt.data:
-                data[user_id] = {"timestamp": msg.date.timestamp(), "warned": False}
-                return True
-            else:
-                if not data[user_id]["warned"]:
-                    data[user_id]["warned"] = True
-                    asyncio.ensure_future(
-                        task(msg, True, flt.data)
-                    )  # for super accuracy use (future - time.time())
-                    return False  # cause we dont need delete again
-
-                asyncio.ensure_future(task(msg))
-                return False
-        else:
-            data.update({user_id: {"timestamp": msg.date.timestamp(), "warned": False}})
-            return True
-
-    return filters.create(___, data=sec)
 
 class Hotty(Client):
     def __init__(self):
