@@ -16,6 +16,7 @@ app = Hotty()
 userbot = Userbot()
 api = SafoneAPI()
 
+BOT_USERNAME = "DeltaStreamBot"  # Replace with the actual bot username
 
 from .platforms import *
 
