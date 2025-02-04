@@ -13,8 +13,9 @@ from pyrogram.errors import MessageTooLong
 from pyrogram.types import Message
 
 from DeltaMusic import app
+from DeltaMusic.plugins.tools import use_chat_lang
 from DeltaMusic.utils import pyro_cooldown
-from DeltaMusic.utils.helper import check_time_gap, post_to_telegraph, use_chat_lang
+from DeltaMusic.utils.helper import check_time_gap, post_to_telegraph 
 from config import COMMAND_HANDLER, GOOGLEAI_KEY, OPENAI_KEY, OWNER_ID, SUDO
 
 __MODULE__ = "ChatBot"
