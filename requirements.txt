@@ -1,5 +1,5 @@
 aiofiles
-aiohttp==3.9.3
+aiohttp==3.11.11
 apscheduler
 asyncio==3.4.3
 bing_image_downloader
