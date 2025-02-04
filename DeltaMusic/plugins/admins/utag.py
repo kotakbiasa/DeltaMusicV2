@@ -6,7 +6,7 @@ from pyrogram.enums import ChatType, ChatMemberStatus
 from pyrogram.errors import UserNotParticipant
 from pyrogram.types import ChatPermissions
 from DeltaMusic import app
-from DeltaMusic.utils.branded_ban import admin_filter
+from DeltaMusic.utils.delta_ban import admin_filter
 
 SPAM_CHATS = {}
 
