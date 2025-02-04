@@ -6,7 +6,7 @@ from pyrogram.errors import FloodWait
 
 from DeltaMusic.utils.database import get_assistant
 from DeltaMusic import app
-from DeltaMusic.utils.branded_ban import admin_filter
+from DeltaMusic.utils.delta_ban import admin_filter
 
 SPAM_CHATS = []
 
