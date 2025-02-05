@@ -11,6 +11,15 @@ languages_present = {}
 def get_string(lang: str):
     return languages[lang]
 
+def get_command(command_name):
+    # Implementation of get_command function
+    # For example, it could return a command string based on the command_name
+    commands = {
+        "speedtest": "speedtest",
+        "spt": "spt"
+    }
+    return commands.get(command_name, "")
+
 for filename in os.listdir(r"./strings/langs/"):
     if "en" not in languages:
         languages["en"] = yaml.safe_load(
