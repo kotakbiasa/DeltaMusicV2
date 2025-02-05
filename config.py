@@ -118,6 +118,7 @@ def time_to_seconds(time):
 
 DURATION_LIMIT = int(time_to_seconds(f"{DURATION_LIMIT_MIN}:00"))
 
+COMMAND_HANDLER = "/"  # Example command handler, change as needed
 
 if SUPPORT_CHANNEL:
     if not re.match("(?:http|https)://", SUPPORT_CHANNEL):
