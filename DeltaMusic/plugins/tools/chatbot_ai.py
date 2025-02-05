@@ -14,7 +14,7 @@ from pyrogram.types import Message
 
 from DeltaMusic import app
 from DeltaMusic.utils import pyro_cooldown
-from DeltaMusic.utils.helper import check_time_gap, post_to_telegraph, use_chat_lang
+from DeltaMusic.utils.helper import check_time_gap, post_to_telegraph
 from config import COMMAND_HANDLER, GOOGLEAI_KEY, OPENAI_KEY, OWNER_ID, SUDO
 
 __MODULE__ = "ChatBot"
@@ -42,7 +42,7 @@ async def get_openai_stream_response(is_stream, key, base_url, model, messages, 
             if len(jawaban) > 4000:
                 jawabanlink = await privatebinapi.send_async("https://bin.yasirweb.eu.org", text=jawaban, expiration="1week", formatting="markdown")
                 await bmsg.edit_msg(
-                    strings("jawaban_terlalu_panjang").format(jawabanlink=jawabanlink.get("full_url")),
+                    strings("answers_too_long").format(jawabanlink=jawabanlink.get("full_url")),
                     disable_web_page_preview=True,
                 )
             else:
@@ -90,7 +90,6 @@ async def get_openai_stream_response(is_stream, key, base_url, model, messages, 
 @app.on_bot_business_message(
     filters.command("ai", COMMAND_HANDLER) & pyro_cooldown.wait(10)
 )
-@use_chat_lang()
 async def gemini_chatbot(_, ctx: Message, strings):
     if len(ctx.command) == 1:
         return await ctx.reply_msg(
@@ -116,7 +115,6 @@ async def gemini_chatbot(_, ctx: Message, strings):
 @app.on_bot_business_message(
     filters.command("ask", COMMAND_HANDLER) & pyro_cooldown.wait(10)
 )
-@use_chat_lang()
 async def openai_chatbot(self, ctx: Message, strings):
     if len(ctx.command) == 1:
         return await ctx.reply_msg(
