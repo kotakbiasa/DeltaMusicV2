@@ -58,12 +58,6 @@ AUTO_GCAST_MSG = getenv("AUTO_GCAST_MSG", "")
 SPOTIFY_CLIENT_ID = getenv("SPOTIFY_CLIENT_ID", "bcfe26b0ebc3428882a0b5fb3e872473")
 SPOTIFY_CLIENT_SECRET = getenv("SPOTIFY_CLIENT_SECRET", "907c6a054c214005aeae1fd752273cc4")
 
-# Add your Google AI key here
-GOOGLEAI_KEY = getenv("GOOGLEAI_KEY", None)
-
-# Add your OpenAI key here
-OPENAI_KEY = getenv("OPENAI_KEY", None)
-
 # Maximum limit for fetching playlist's track from youtube, spotify, apple links.
 SERVER_PLAYLIST_LIMIT = int(getenv("SERVER_PLAYLIST_LIMIT", "50"))
 PLAYLIST_FETCH_LIMIT = int(getenv("PLAYLIST_FETCH_LIMIT", "25"))
