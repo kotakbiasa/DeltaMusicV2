@@ -13,7 +13,6 @@ def get_string(lang: str):
 
 def get_command(command_name):
     # Implementation of get_command function
-    # For example, it could return a command string based on the command_name
     commands = {
         "speedtest": "speedtest",
         "spt": "spt"
