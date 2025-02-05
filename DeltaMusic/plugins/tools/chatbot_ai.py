@@ -87,9 +87,6 @@ async def get_openai_stream_response(is_stream, key, base_url, model, messages, 
 
 
 @app.on_message(filters.command("ai", COMMAND_HANDLER) & wait(10))
-@app.on_bot_business_message(
-    filters.command("ai", COMMAND_HANDLER) & wait(10)
-)
 async def gemini_chatbot(_, ctx: Message, strings):
     if len(ctx.command) == 1:
         return await ctx.reply_msg(
@@ -112,9 +109,6 @@ async def gemini_chatbot(_, ctx: Message, strings):
     gemini_conversations[uid].append({"role": "assistant", "content": ai_response})
 
 @app.on_message(filters.command("ask", COMMAND_HANDLER) & wait(10))
-@app.on_bot_business_message(
-    filters.command("ask", COMMAND_HANDLER) & wait(10)
-)
 async def openai_chatbot(self, ctx: Message, strings):
     if len(ctx.command) == 1:
         return await ctx.reply_msg(
