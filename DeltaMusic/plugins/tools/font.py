@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from DeltaMusic import app
-from DeltaMusic.utils.branded_font import Fonts
+from DeltaMusic.utils.delta_font import Fonts
 
 
 @app.on_message(filters.command(["font", "fonts"]))
