@@ -2,7 +2,7 @@ import asyncio
 import speedtest
 from pyrogram import filters
 from pyrogram.types import Message
-# from strings import get_command  # Remove this line
+from strings import get_command
 from DeltaMusic import app
 from DeltaMusic.misc import SUDOERS
 from DeltaMusic.utils.decorators.language import language
