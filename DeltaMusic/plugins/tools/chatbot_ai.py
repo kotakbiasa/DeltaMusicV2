@@ -15,7 +15,7 @@ from pyrogram.types import Message
 from DeltaMusic import app
 from DeltaMusic.utils import pyro_cooldown
 from DeltaMusic.utils.helper import check_time_gap, post_to_telegraph
-from config import COMMAND_HANDLER, GOOGLEAI_KEY, OPENAI_KEY, OWNER_ID, SUDO
+from config import COMMAND_HANDLER, GOOGLEAI_KEY, OPENAI_KEY, OWNER_ID
 
 __MODULE__ = "ChatBot"
 __HELP__ = """
@@ -124,7 +124,7 @@ async def openai_chatbot(self, ctx: Message, strings):
         return await ctx.reply_msg("OPENAI_KEY env tidak ada!!!")
     uid = ctx.from_user.id if ctx.from_user else ctx.sender_chat.id
     is_in_gap, _ = await check_time_gap(uid)
-    if is_in_gap and (uid != OWNER_ID or uid not in SUDO):
+    if is_in_gap and (uid != OWNER_ID):
         return await ctx.reply_msg(strings("dont_spam"), del_in=5)
     pertanyaan = ctx.input
     msg = await ctx.reply_msg(strings("find_answers_str"), quote=True)
