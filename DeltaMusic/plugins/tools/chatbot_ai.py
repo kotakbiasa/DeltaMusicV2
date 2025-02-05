@@ -13,8 +13,9 @@ from pyrogram.errors import MessageTooLong
 from pyrogram.types import Message
 
 from DeltaMusic import app
-from DeltaMusic.utils import pyro_cooldown
-from DeltaMusic.utils.helper import check_time_gap, post_to_telegraph
+from DeltaMusic.utils import post_to_telegraph
+from DeltaMusic.utils.helper import check_time_gap
+from DeltaMusic.utils.pyro_cooldown import wait
 from config import COMMAND_HANDLER, GOOGLEAI_KEY, OPENAI_KEY, OWNER_ID
 
 __MODULE__ = "ChatBot"
@@ -86,9 +87,9 @@ async def get_openai_stream_response(is_stream, key, base_url, model, messages, 
     return answer
 
 
-@app.on_message(filters.command("ai", COMMAND_HANDLER) & pyro_cooldown.wait(10))
+@app.on_message(filters.command("ai", COMMAND_HANDLER) & wait(10))
 @app.on_bot_business_message(
-    filters.command("ai", COMMAND_HANDLER) & pyro_cooldown.wait(10)
+    filters.command("ai", COMMAND_HANDLER) & wait(10)
 )
 async def gemini_chatbot(_, ctx: Message, strings):
     if len(ctx.command) == 1:
@@ -111,9 +112,9 @@ async def gemini_chatbot(_, ctx: Message, strings):
         return
     gemini_conversations[uid].append({"role": "assistant", "content": ai_response})
 
-@app.on_message(filters.command("ask", COMMAND_HANDLER) & pyro_cooldown.wait(10))
+@app.on_message(filters.command("ask", COMMAND_HANDLER) & wait(10))
 @app.on_bot_business_message(
-    filters.command("ask", COMMAND_HANDLER) & pyro_cooldown.wait(10)
+    filters.command("ask", COMMAND_HANDLER) & wait(10)
 )
 async def openai_chatbot(self, ctx: Message, strings):
     if len(ctx.command) == 1:
