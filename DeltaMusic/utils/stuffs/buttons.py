@@ -34,8 +34,8 @@ class BUTTONS(object):
             InlineKeyboardButton("Quotly", callback_data="mplus HELP_Q")
         ],
         [
-            InlineKeyboardButton("⬅️", callback_data="settings_back_helper"),
-            InlineKeyboardButton("🔙", callback_data="mbot_cb"),
-            InlineKeyboardButton("➡️", callback_data="managebot123 settings_back_helper"),
+            InlineKeyboardButton("◁", callback_data="settings_back_helper"),
+            InlineKeyboardButton("↻ Kembali ↻", callback_data="mbot_cb"),
+            InlineKeyboardButton("▷", callback_data="managebot123 settings_back_helper"),
         ]
     ]
