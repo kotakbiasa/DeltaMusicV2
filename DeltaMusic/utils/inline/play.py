@@ -244,10 +244,10 @@ def stream_markup2(_, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text="🎵 Playlist", callback_data=f"show_playlist {chat_id}"
+                text="🎵 Playlist", callback_data=f"get_playlist_playmode {chat_id}"
             ),
             InlineKeyboardButton(
-                text="⚙️ Settings", callback_data=f"show_settings {chat_id}"
+                text="⚙️ Settings", callback_data=f"settings_helper {chat_id}"
             ),
         ],
         [
@@ -287,11 +287,11 @@ def stream_markup_timer2(_, chat_id, played, dur):
             )
         ],
         [
-            InlineKeyboardButton(text="▷", callback_data=f"ADMIN Resume|{chat_id}"),
-            InlineKeyboardButton(text="II", callback_data=f"ADMIN Pause|{chat_id}"),
-            InlineKeyboardButton(text="↻", callback_data=f"ADMIN Replay|{chat_id}"),
-            InlineKeyboardButton(text="‣‣I", callback_data=f"ADMIN Skip|{chat_id}"),
-            InlineKeyboardButton(text="▢", callback_data=f"ADMIN Stop|{chat_id}"),
+            InlineKeyboardButton(text="▶️", callback_data=f"ADMIN Resume|{chat_id}"),
+            InlineKeyboardButton(text="⏸️", callback_data=f"ADMIN Pause|{chat_id}"),
+            InlineKeyboardButton(text="🔄", callback_data=f"ADMIN Replay|{chat_id}"),
+            InlineKeyboardButton(text="⏭️", callback_data=f"ADMIN Skip|{chat_id}"),
+            InlineKeyboardButton(text="⏹️", callback_data=f"ADMIN Stop|{chat_id}"),
         ],
         [
             InlineKeyboardButton(text=_["CLOSEMENU_BUTTON"], callback_data="close"),
@@ -444,7 +444,7 @@ def panel_markup_3(_, videoid, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text="❥ ʙᴀᴄᴋ ❥",
+                text="⬅️ Kembali",
                 callback_data=f"Pages Back|2|{videoid}|{chat_id}",
             ),
         ],
@@ -537,7 +537,7 @@ def panel_markup_clone(_, vidid, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text="✚ Playlist ✚", callback_data=f"branded_playlist {vidid}"
+                text="✚ Playlist ✚", callback_data=f"delta_playlist {vidid}"
             ),
         ],
     ]
