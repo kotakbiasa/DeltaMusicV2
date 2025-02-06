@@ -68,10 +68,10 @@ def stream_markup_timer(_, vidid, chat_id, played, dur):
         ],
         [
             InlineKeyboardButton(
-                text="🎵 Playlist", callback_data=f"show_playlist {chat_id}"
+                text="🎵 Playlist", callback_data=f"get_playlist_playmode {chat_id}"
             ),
             InlineKeyboardButton(
-                text="⚙️ Settings", callback_data=f"show_settings {chat_id}"
+                text="⚙️ Settings", callback_data=f"settings_helper {chat_id}"
             ),
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
@@ -90,10 +90,10 @@ def stream_markup(_, videoid, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text="🎵 Playlist", callback_data=f"show_playlist {chat_id}"
+                text="🎵 Playlist", callback_data=f"get_playlist_playmode {chat_id}"
             ),
             InlineKeyboardButton(
-                text="⚙️ Settings", callback_data=f"show_settings {chat_id}"
+                text="⚙️ Settings", callback_data=f"settings_helper {chat_id}"
             ),
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
@@ -156,7 +156,7 @@ def slider_markup(_, videoid, user_id, query, query_type, channel, fplay):
         ],
         [
             InlineKeyboardButton(
-                text="◁",
+                text="⬅️",
                 callback_data=f"slider B|{query_type}|{query}|{user_id}|{channel}|{fplay}",
             ),
             InlineKeyboardButton(
@@ -164,7 +164,7 @@ def slider_markup(_, videoid, user_id, query, query_type, channel, fplay):
                 callback_data=f"forceclose {query}|{user_id}",
             ),
             InlineKeyboardButton(
-                text="▷",
+                text="➡️",
                 callback_data=f"slider F|{query_type}|{query}|{user_id}|{channel}|{fplay}",
             ),
         ],
