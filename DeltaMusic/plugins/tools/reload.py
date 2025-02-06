@@ -86,6 +86,18 @@ async def restartbot(client, message: Message, _):
     return await mystic.edit_text(_["reload_5"].format(app.mention))
 
 
+@app.on_callback_query(filters.regex("close") & ~BANNED_USERS)
+async def close_menu(_, CallbackQuery):
+    try:
+        await CallbackQuery.answer()
+        await CallbackQuery.message.delete()
+        await CallbackQuery.message.reply_text(
+            f"Ditutup oleh: {CallbackQuery.from_user.mention}"
+        )
+    except:
+        pass
+
+
 @app.on_callback_query(filters.regex("stop_downloading") & ~BANNED_USERS)
 @ActualAdminCB
 async def stop_download(client, CallbackQuery: CallbackQuery, _):
