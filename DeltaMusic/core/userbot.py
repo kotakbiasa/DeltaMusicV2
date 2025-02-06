@@ -51,7 +51,7 @@ class Userbot(Client):
             assistants.append(1)
             try:
                 await self.one.send_message(
-                    config.LOG_GROUP_ID,
+                    config.LOGGER_ID,
                     "Asisten dimulai, sekarang saatnya menikmati musik di obrolan video Telegram.",
                 )
             except:
@@ -73,7 +73,7 @@ class Userbot(Client):
             assistants.append(2)
             try:
                 await self.two.send_message(
-                    config.LOG_GROUP_ID,
+                    config.LOGGER_ID,
                     "Asisten dimulai, sekarang saatnya menikmati musik di obrolan video Telegram.",
                 )
             except:
@@ -95,7 +95,7 @@ class Userbot(Client):
             assistants.append(3)
             try:
                 await self.three.send_message(
-                    config.LOG_GROUP_ID,
+                    config.LOGGER_ID,
                     "Asisten dimulai, sekarang saatnya menikmati musik di obrolan video Telegram.",
                 )
             except:
@@ -117,7 +117,7 @@ class Userbot(Client):
             assistants.append(4)
             try:
                 await self.four.send_message(
-                    config.LOG_GROUP_ID,
+                    config.LOGGER_ID,
                     "Asisten dimulai, sekarang saatnya menikmati musik di obrolan video Telegram.",
                 )
             except:
@@ -139,7 +139,7 @@ class Userbot(Client):
             assistants.append(5)
             try:
                 await self.five.send_message(
-                    config.LOG_GROUP_ID,
+                    config.LOGGER_ID,
                     "Asisten dimulai, sekarang saatnya menikmati musik di obrolan video Telegram.",
                 )
             except:
