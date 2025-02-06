@@ -40,7 +40,7 @@ async def init():
     await userbot.start()
     await Hotty.start()
     try:
-        await Hotty.stream_call("https://envs.sh/mtz.jpg")
+        await Hotty.stream_call("https://envs.sh/yJN.mp4")
     except NoActiveGroupCall:
         LOGGER("DeltaMusic").error(
             "Silakan nyalakan videochat dari grup log\saluran Anda.\n\nMenghentikan Bot..."
