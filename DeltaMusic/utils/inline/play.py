@@ -68,10 +68,10 @@ def stream_markup_timer(_, vidid, chat_id, played, dur):
         ],
         [
             InlineKeyboardButton(
-                text="🎵 Playlist", callback_data=f"show_playlist {chat_id}"
+                text="🎵 Playlist", callback_data=f"/playlist {chat_id}"
             ),
             InlineKeyboardButton(
-                text="⚙️ Settings", callback_data=f"show_settings {chat_id}"
+                text="⚙️ Settings", callback_data=f"/settings {chat_id}"
             ),
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
@@ -90,10 +90,10 @@ def stream_markup(_, videoid, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text="🎵 Playlist", callback_data=f"show_playlist {chat_id}"
+                text="🎵 Playlist", callback_data=f"/playlist {chat_id}"
             ),
             InlineKeyboardButton(
-                text="⚙️ Settings", callback_data=f"show_settings {chat_id}"
+                text="⚙️ Settings", callback_data=f"/settings {chat_id}"
             ),
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
@@ -244,10 +244,10 @@ def stream_markup2(_, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text="🎵 Playlist", callback_data=f"show_playlist {chat_id}"
+                text="🎵 Playlist", callback_data=f"/playlist {chat_id}"
             ),
             InlineKeyboardButton(
-                text="⚙️ Settings", callback_data=f"show_settings {chat_id}"
+                text="⚙️ Settings", callback_data=f"/settings {chat_id}"
             ),
         ],
         [
@@ -295,10 +295,10 @@ def stream_markup_timer2(_, chat_id, played, dur):
         ],
         [
             InlineKeyboardButton(
-                text="🎵 Playlist", callback_data=f"show_playlist {chat_id}"
+                text="🎵 Playlist", callback_data=f"/playlist {chat_id}"
             ),
             InlineKeyboardButton(
-                text="⚙️ Settings", callback_data=f"show_settings {chat_id}"
+                text="⚙️ Settings", callback_data=f"/settings {chat_id}"
             ),
         ],
         [
