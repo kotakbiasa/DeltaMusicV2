@@ -86,18 +86,6 @@ async def restartbot(client, message: Message, _):
     return await mystic.edit_text(_["reload_5"].format(app.mention))
 
 
-@app.on_callback_query(filters.regex("close") & ~BANNED_USERS)
-async def close_menu(_, CallbackQuery):
-    try:
-        await CallbackQuery.answer()
-        await CallbackQuery.message.delete()
-        await CallbackQuery.message.reply_text(
-            f"Ditutup oleh: {CallbackQuery.from_user.mention}"
-        )
-    except:
-        pass
-
-
 @app.on_callback_query(filters.regex("stop_downloading") & ~BANNED_USERS)
 @ActualAdminCB
 async def stop_download(client, CallbackQuery: CallbackQuery, _):
@@ -121,3 +109,13 @@ async def stop_download(client, CallbackQuery: CallbackQuery, _):
         except:
             return await CallbackQuery.answer(_["tg_8"], show_alert=True)
     await CallbackQuery.answer(_["tg_9"], show_alert=True)
+
+
+# Add a callback query handler for show_settings
+@app.on_callback_query(filters.regex("show_settings") & ~BANNED_USERS)
+async def show_settings_handler(client, CallbackQuery: CallbackQuery):
+    try:
+        await CallbackQuery.answer("Settings button clicked!")
+        # Add your settings logic here
+    except Exception as e:
+        await CallbackQuery.answer(f"Error: {str(e)}", show_alert=True)
