@@ -8,7 +8,7 @@ from DeltaMusic import app, Platform, LOGGER
 from DeltaMusic.utils import get_lang
 from DeltaMusic.utils.logger import play_logs
 from DeltaMusic.utils.stream.stream import stream
-from config import BANNED_USERS, PREFIXES
+from config import BANNED_USERS
 from strings import get_command, get_string
 
 MOVIES_COMMAND = get_command("MOVIES_COMMAND")
