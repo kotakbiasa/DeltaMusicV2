@@ -19,9 +19,9 @@ close_keyboard = InlineKeyboardMarkup(
 )
 
 
-@app.on_message(filters.command(["dogs", "dog", "anjing"]) & ~BANNED_USERS)
+@app.on_message(filters.command(["fox"]) & ~BANNED_USERS)
 async def dog(_client: Client, message: Message):
-    r = requests.get("https://random.dog/woof.json")
+    r = requests.get("https://randomfox.ca/floof")
     if r.status_code == 200:
         data = r.json()
         dog_url = data["url"]
@@ -30,13 +30,13 @@ async def dog(_client: Client, message: Message):
         else:
             await message.reply_photo(dog_url, reply_markup=close_keyboard)
     else:
-        await message.reply_text("🐕 Gagal mencari foto anjing!")
+        await message.reply_text("🦊 Gagal mencari foto rubah!")
 
 
 @app.on_callback_query(filters.regex("refresh_dog") & ~BANNED_USERS)
 async def refresh_dog(_client: Client, callback_query: CallbackQuery):
     try:
-        r = requests.get("https://random.dog/woof.json", timeout=10)  # Add timeout for robustness
+        r = requests.get("https://randomfox.ca/floof", timeout=10)  # Add timeout for robustness
         r.raise_for_status()  # Raise HTTPError for bad responses (4xx or 5xx)
         data = r.json()
         dog_url = data["url"]  # Access "url" directly
@@ -49,7 +49,7 @@ async def refresh_dog(_client: Client, callback_query: CallbackQuery):
             await callback_query.edit_message_media(InputMediaPhoto(media=dog_url), reply_markup=close_keyboard)
 
     except requests.exceptions.RequestException as e:
-        await callback_query.edit_message_text(f"🐕 Gagal mencari foto anjing! Error: {e}")
+        await callback_query.edit_message_text(f"🦊 Gagal mencari foto rubah! Error: {e}")
     except KeyError as e:  # Handle potential KeyError if 'url' is missing
-        await callback_query.edit_message_text(f"🐕 Gagal mencari foto anjing! Data tak valid: {e}")
+        await callback_query.edit_message_text(f"🦊 Gagal mencari foto rubah! Data tak valid: {e}")
 
