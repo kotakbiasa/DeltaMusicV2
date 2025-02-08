@@ -13,13 +13,13 @@ from pyrogram.types import (
 
 close_keyboard = InlineKeyboardMarkup(
     [
-        [InlineKeyboardButton(text="🔄 **Perbarui**", callback_data="refresh_dog")],
-        [InlineKeyboardButton(text="❌ **Tutup**", callback_data="close")],
+        [InlineKeyboardButton(text="🔄 Perbarui", callback_data="refresh_dog")],
+        [InlineKeyboardButton(text="❌ Tutup", callback_data="close")],
     ]
 )
 
 
-@app.on_message(filters.command(["dogs", "dog"]) & ~BANNED_USERS)
+@app.on_message(filters.command(["dogs", "dog", "anjing"]) & ~BANNED_USERS)
 async def dog(_client: Client, message: Message):
     r = requests.get("https://random.dog/woof.json")
     if r.status_code == 200:
