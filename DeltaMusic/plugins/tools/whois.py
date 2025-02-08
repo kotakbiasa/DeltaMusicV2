@@ -18,11 +18,11 @@ def reply_check(message: Message):
 
 infotext = (
     "[{full_name}](tg://user?id={user_id})\n\n"
-    " ➻ 𝗨𝘀𝗲𝗿 𝗜𝗗: `{user_id}`\n"
-    " ➻ 𝗣𝗿𝗶𝗺𝗲𝗶𝗿𝗼 𝗡𝗼𝗺𝗲: `{first_name}`\n"
-    " ➻ 𝗨́𝗹𝘁𝗶𝗺𝗼 𝗡𝗼𝗺𝗲: `{last_name}`\n"
+    " ➻ 𝗜𝗗 𝗣𝗲𝗻𝗴𝗴𝘂𝗻𝗮: `{user_id}`\n"
+    " ➻ 𝗡𝗮𝗺𝗮 𝗣𝗲𝗿𝘁𝗮𝗺𝗮: `{first_name}`\n"
+    " ➻ 𝗡𝗮𝗺𝗮 𝗔𝗸𝗵𝗶𝗿: `{last_name}`\n"
     " ➻ 𝗨𝘀𝗲𝗿𝗻𝗮𝗺𝗲: `@{username}`\n"
-    " ➻ 𝗨́𝗹𝘁𝗶𝗺𝗮 𝘃𝗲𝘇 𝗼𝗻𝗹𝗶𝗻𝗲: `{last_online}`"
+    " ➻ 𝗧𝗲𝗿𝗮𝗸𝗵𝗶𝗿 𝗼𝗻𝗹𝗶𝗻𝗲: `{last_online}`"
 )
 
 
@@ -30,15 +30,15 @@ def last_online(user: User):
     if user.is_bot:
         return ""
     elif user.status == "recently":
-        return "𝗿𝗲𝗰𝗲𝗻𝘁𝗲𝗺𝗲𝗻𝘁𝗲"
+        return "𝗿𝗲𝗰𝗲𝗻𝘁𝗹𝘆"
     elif user.status == "within_week":
-        return "𝗻𝗼 𝘂́𝗹𝘁𝗶𝗺𝗼 𝘀𝗲𝗺𝗮𝗻𝗮"
+        return "𝗱𝗮𝗹𝗮𝗺 𝘀𝗲𝗺𝗶𝗻𝗴𝗴𝘂"
     elif user.status == "within_month":
-        return "𝗻𝗼 𝘂́𝗹𝘁𝗶𝗺𝗼 𝗺𝗲̂𝘀"
+        return "𝗱𝗮𝗹𝗮𝗺 𝘀𝗲𝗯𝘂𝗹𝗮𝗻"
     elif user.status == "long_time_ago":
-        return "𝗵𝗮́ 𝗺𝘂𝗶𝘁𝗼 𝘁𝗲𝗺𝗽𝗼 :("
+        return "𝘀𝘂𝗱𝗮𝗵 𝗹𝗮𝗺𝗮 :("
     elif user.status == "online":
-        return "𝗮𝗰𝘁𝘂𝗮𝗹𝗺𝗲𝗻𝘁𝗲 𝗼𝗻𝗹𝗶𝗻𝗲"
+        return "𝘀𝗲𝗱𝗮𝗻𝗴 𝗼𝗻𝗹𝗶𝗻𝗲"
     elif user.status == "offline":
         return datetime.fromtimestamp(user.status.date).strftime(
             "%a, %d %b %Y, %H:%M:%S"
@@ -65,7 +65,7 @@ async def whois(client, message):
     try:
         user = await client.get_users(get_user)
     except PeerIdInvalid:
-        await message.reply("Não conheço este usuário.")
+        await message.reply("Tidak mengenal pengguna ini.")
         return
     desc = await client.get_chat(get_user)
     desc = desc.description
@@ -78,25 +78,25 @@ async def whois(client, message):
             last_name=user.last_name if user.last_name else "",
             username=user.username if user.username else "",
             last_online=last_online(user),
-            bio=desc if desc else "𝗩𝗮𝘇𝗶𝗼.",
+            bio=desc if desc else "Kosong.",
         ),
         disable_web_page_preview=True,
     )
 
 
-__MODULE__ = "🆔 𝗜𝗻𝗳𝗼"
+__MODULE__ = "🆔 Info"
 __HELP__ = """
-**Comando:**
+**Perintah:**
 
-• /whois - **𝗩𝗲𝗿𝗶𝗳𝗶𝗰𝗮𝗿 𝗶𝗻𝗳𝗼𝗿𝗺𝗮𝗰̧𝗮̃𝗼 𝗱𝗼 𝘂𝘀𝘂𝗮́𝗿𝗶𝗼.**
+• /whois - **Memeriksa informasi pengguna.**
 
-**𝗜𝗻𝗳𝗼𝗿𝗺𝗮𝗰̧𝗼̃𝗲𝘀:**
+**Informasi:**
 
-- 𝗘𝘀𝘁𝗲 𝗯𝗼𝘁 𝗽𝗿𝗼𝘃𝗶𝗱𝗲𝗻𝗰𝗶𝗮 𝘂𝗺 𝗰𝗼𝗺𝗮𝗻𝗱𝗼 𝗽𝗮𝗿𝗮 𝘃𝗲𝗿𝗶𝗳𝗶𝗰𝗮𝗿 𝗶𝗻𝗳𝗼𝗿𝗺𝗮𝗰̧𝗮̃𝗼 𝗱𝗲 𝘂𝘀𝘂𝗮́𝗿𝗶𝗼.
-- 𝗨𝘀𝗲 𝗼 𝗰𝗼𝗺𝗮𝗻𝗱𝗼 /whois 𝘀𝗲𝗴𝘂𝗶𝗱𝗼 𝗽𝗼𝗿 𝘂𝗺𝗮 𝗿𝗲𝘀𝗽𝗼𝘀𝘁𝗮 𝗮 𝘂𝗺𝗮 𝗺𝗲𝗻𝘀𝗮𝗴𝗲𝗺 𝗼𝘂 𝗨𝘀𝗲𝗿 𝗜𝗗 𝗽𝗮𝗿𝗮 𝗼𝗯𝘁𝗲𝗿 𝗶𝗻𝗳𝗼𝗿𝗺𝗮𝗰̧𝗮̃𝗼 𝗱𝗼 𝘂𝘀𝘂𝗮́𝗿𝗶𝗼.
+- Bot ini menyediakan perintah untuk memeriksa informasi pengguna.
+- Gunakan perintah /whois diikuti dengan balasan pesan atau ID Pengguna untuk mendapatkan informasi pengguna.
 
-**𝗡𝗼𝘁𝗮:**
+**Catatan:**
 
-- 𝗢 𝗰𝗼𝗺𝗮𝗻𝗱𝗼 /whois 𝗽𝗼𝗱𝗲 𝘀𝗲𝗿 𝘂𝘀𝗮𝗱𝗼 𝗽𝗮𝗿𝗮 𝗿𝗲𝘁𝗿𝗶𝗯𝘂𝗶𝗿 𝗶𝗻𝗳𝗼𝗿𝗺𝗮𝗰̧𝗼̃𝗲𝘀 𝘀𝗼𝗯𝗿𝗲 𝗼 𝘂𝘀𝘂𝗮́𝗿𝗶𝗼 𝗻𝗼 𝗰𝗵𝗮𝘁.
-- 𝗔𝘀 𝗶𝗻𝗳𝗼𝗿𝗺𝗮𝗰̧𝗼̃𝗲𝘀 𝗶𝗻𝗰𝗹𝘂𝗶𝗺 𝗜𝗗, 𝗣𝗿𝗶𝗺𝗲𝗶𝗿𝗼 𝗡𝗼𝗺𝗲, 𝗨́𝗹𝘁𝗶𝗺𝗼 𝗡𝗼𝗺𝗲, 𝗨𝘀𝗲𝗿𝗻𝗮𝗺𝗲 𝗲 𝘀𝘁𝗮𝘁𝘂𝘀 𝗼𝗻𝗹𝗶𝗻𝗲.
+- Perintah /whois dapat digunakan untuk mengembalikan informasi tentang pengguna di chat.
+- Informasi termasuk ID, Nama Pertama, Nama Akhir, Username, dan status online.
 """
