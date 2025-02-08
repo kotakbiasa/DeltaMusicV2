@@ -16,7 +16,7 @@ def cek_balasan(message: Message):
     return reply_id
 
 
-teks_info = (
+infotext = (
     "[{full_name}](tg://user?id={user_id})\n\n"
     " ➻ ID Pengguna: `{user_id}`\n"
     " ➻ Nama Depan: `{first_name}`\n"
