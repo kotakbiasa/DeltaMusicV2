@@ -67,10 +67,10 @@ def stream_markup_timer(_, vidid, chat_id, played, dur):
         ],
         [
             InlineKeyboardButton(
-                text="🎵 Queue", callback_data=f"show_queue {chat_id}"
+                text="🎵 Ini", callback_data=f"show_queue {chat_id}"
             ),
             InlineKeyboardButton(
-                text="⚙️ Settings", callback_data=f"show_settings {chat_id}"
+                text="⚙️ Tombol", callback_data=f"show_settings {chat_id}"
             ),
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="forceclose")],
@@ -88,10 +88,10 @@ def stream_markup(_, videoid, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text="🎵 Queue", callback_data=f"show_queue {chat_id}"
+                text="🎵 Ini", callback_data=f"show_queue {chat_id}"
             ),
             InlineKeyboardButton(
-                text="⚙️ Settings", callback_data=f"show_settings {chat_id}"
+                text="⚙️ Tombol", callback_data=f"show_settings {chat_id}"
             ),
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="forceclose")],
@@ -229,10 +229,10 @@ def stream_markup2(_, chat_id):
         ],
         [
             InlineKeyboardButton(
-                text="🎵 Queue", callback_data=f"show_queue {chat_id}"
+                text="🎵 Ini", callback_data=f"show_queue {chat_id}"
             ),
             InlineKeyboardButton(
-                text="⚙️ Settings", callback_data=f"show_settings {chat_id}"
+                text="⚙️ Tombol", callback_data=f"show_settings {chat_id}"
             ),
         ],
         [
@@ -279,10 +279,10 @@ def stream_markup_timer2(_, chat_id, played, dur):
         ],
         [
             InlineKeyboardButton(
-                text="🎵 Queue", callback_data=f"show_queue {chat_id}"
+                text="🎵 Ini", callback_data=f"show_queue {chat_id}"
             ),
             InlineKeyboardButton(
-                text="⚙️ Settings", callback_data=f"show_settings {chat_id}"
+                text="⚙️ Tombol", callback_data=f"show_settings {chat_id}"
             ),
         ],
         [
