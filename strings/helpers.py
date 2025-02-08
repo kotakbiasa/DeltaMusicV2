@@ -150,3 +150,68 @@ Anda dapat mengontrol kecepatan pemutaran streaming yang sedang berlangsung. [Ha
 /speed atau /playback : Untuk menyesuaikan kecepatan pemutaran audio di grup.
 /cspeed atau /cplayback : Untuk menyesuaikan kecepatan pemutaran audio di channel.
 """
+
+HELP_16 = """
+<b><u>ChatGPT:</b></u>
+
+/advice - Dapatkan saran acak dari bot
+/ai [pertanyaan Anda] - Ajukan pertanyaan ke AI ChatGPT
+/gemini [pertanyaan Anda] - Ajukan pertanyaan ke AI Gemini Google
+/bard [pertanyaan Anda] - Ajukan pertanyaan ke Bard AI Google
+"""
+
+HELP_17 = """
+<b><u>Hewan:</b></u>
+
+/fox : Dapatkan gambar rubah acak.
+/cat : Dapatkan gambar kucing acak.
+/dog : Dapatkan gambar anjing acak.
+"""
+
+HELP_18 = """
+<b><u>Reel:</b></u>
+
+Pengunduh Reels Instagram:
+
+/ig [URL]: Unduh reels Instagram. Berikan URL reel setelah perintah
+/instagram [URL]: Unduh reels Instagram. Berikan URL reel setelah perintah
+/reel [URL]: Unduh reels Instagram. Berikan URL reel setelah perintah
+"""
+
+HELP_19 = """
+<b><u>Perintah Anime:</b></u>
+
+/anime [judul] : Cari anime dengan judul yang diberikan.
+"""
+
+HELP_20 = """
+<b><u>Info:</b></u>
+
+/whois - **Memeriksa informasi pengguna.**
+
+**Informasi:**
+
+- Bot ini menyediakan perintah untuk memeriksa informasi pengguna.
+- Gunakan perintah /whois diikuti dengan balasan pesan atau ID Pengguna untuk mendapatkan informasi pengguna.
+
+**Catatan:**
+
+- Perintah /whois dapat digunakan untuk mengembalikan informasi tentang pengguna di chat.
+- Informasi termasuk ID, Nama Pertama, Nama Akhir, Username, dan status online.
+"""
+
+HELP_21 = """
+<b><u>Wallpaper:</b></u>
+
+/wall - Unduh dan kirim wallpaper.
+
+Informasi:
+
+- Bot ini menyediakan perintah untuk mengunduh dan mengirim wallpaper.
+- Gunakan perintah /wall dengan kata kunci untuk mencari dan mengirim wallpaper di chat.
+
+Catatan:
+
+- Perintah ini dapat digunakan untuk mengunduh dan mengirim wallpaper.
+- Gunakan kata kunci untuk mencari wallpaper.
+"""

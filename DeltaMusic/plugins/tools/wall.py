@@ -37,18 +37,3 @@ async def wall(_, message: Message):
         )
 
 
-__MODULE__ = "🖼️ Wallpaper"
-__HELP__ = """
-📌 Perintah:
-
-• /wall - Unduh dan kirim wallpaper.
-
-Informasi:
-
-- Bot ini menyediakan perintah untuk mengunduh dan mengirim wallpaper.
-- Gunakan perintah /wall dengan kata kunci untuk mencari dan mengirim wallpaper di chat.
-
-Catatan:
-
-- Perintah ini dapat digunakan untuk mengunduh dan mengirim wallpaper.
-"""

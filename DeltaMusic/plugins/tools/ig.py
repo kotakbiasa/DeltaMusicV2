@@ -52,11 +52,3 @@ async def download_instagram_video(_, message: Message):
             return await message.reply_text("Gagal mengunduh reel ❗")
 
 
-__MODULE__ = "📲Reel"
-__HELP__ = """
-Pengunduh Reels Instagram:
-
-• /ig [URL]: Unduh reels Instagram. Berikan URL reel setelah perintah
-• /instagram [URL]: Unduh reels Instagram. Berikan URL reel setelah perintah
-• /reel [URL]: Unduh reels Instagram. Berikan URL reel setelah perintah
-"""

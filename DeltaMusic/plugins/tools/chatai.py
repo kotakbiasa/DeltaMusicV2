@@ -24,11 +24,3 @@ async def chatgpt_chat(bot: Client, message: Message):
     await message.reply_text(f"🤖 **Respon:**\n\n{results}")
 
 
-__MODULE__ = "🤖 ChatGPT"
-__HELP__ = """
-Perintah:
-
-• /advice - Dapatkan saran acak dari bot
-• /ai [pertanyaan Anda] - Ajukan pertanyaan ke AI ChatGPT
-• /gemini [pertanyaan Anda] - Ajukan pertanyaan ke AI Gemini Google
-• /bard [pertanyaan Anda] - Ajukan pertanyaan ke Bard AI Google
