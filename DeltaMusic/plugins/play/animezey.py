@@ -9,10 +9,7 @@ from DeltaMusic.utils import get_lang
 from DeltaMusic.utils.logger import play_logs
 from DeltaMusic.utils.stream.stream import stream
 from config import BANNED_USERS
-from strings import get_command, get_string
-
-MOVIES_COMMAND = get_command("MOVIES_COMMAND")
-ANIME_COMMAND = get_command("ANIME_COMMAND")
+from strings import get_string
 
 RESULTS_PER_PAGE = 4
 
