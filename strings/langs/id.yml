@@ -372,7 +372,7 @@ server_11 : "» Menjalankan speedtest..."
 server_12 : "<b>⇆ Menjalankan speedtest unduhan...</b>"
 server_13 : "<b>⇆ Menjalankan speedtest unggahan...</b>"
 server_14 : "<b>↻ Membagikan hasil speedtest...</b>"
-server_15 : "✯ <b>Hasil Speedtest</b> ✯\n\n<u><b>Klien:</b></u>\n<b>» ISP:</b> {0}\n<b>» Negara:</b> {1}\n\n<u><b>Server:</b></u>\n<b>» Nama:</b> {2}\n<b>» Negara:</b> {3}, {4}\n<b>» Sponsor:</b> {5}\n<b>» Latensi:</b> {6}\n<b>» Ping:</b> {7}"
+server_15 : "✯ <b>Hasil Speedtest</b> ✯\n\n<u><b>Klien:</b></u>\n<b>🌐 ISP:</b> {0}\n<b>🏳️ Negara:</b> {1}\n\n<u><b>Server:</b></u>\n<b>🌍 Nama:</b> {2}\n<b>🇦🇺 Negara:</b> {3}, {4}\n<b>💼 Sponsor:</b> {5}\n<b>⚡ Latensi:</b> {6}\n<b>🏓 Ping:</b> {7}"
 
 gban_1 : "» Mengapa Anda ingin melakukan gban pada diri sendiri?"
 gban_2 : "» Mengapa saya harus melakukan gban pada diri sendiri?"
