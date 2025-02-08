@@ -19,7 +19,7 @@ close_keyboard = InlineKeyboardMarkup(
 )
 
 
-@app.on_message(filters.command("cat", "kucing") & ~BANNED_USERS)
+@app.on_message(filters.command("cat") & ~BANNED_USERS)
 async def cat(_client: Client, message: Message):
     r = requests.get("https://api.thecatapi.com/v1/images/search")
     if r.status_code == 200:
