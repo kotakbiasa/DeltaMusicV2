@@ -6,7 +6,7 @@ from traceback import format_exc
 from typing import List
 
 from PIL import Image
-from WinxMusic import app
+from DeltaMusic import app
 from pyrogram import Client, errors, filters, raw
 from pyrogram.errors import (
     PeerIdInvalid,
