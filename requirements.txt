@@ -29,6 +29,7 @@ SafoneAPI
 search_engine_parser
 speedtest-cli
 spotipy
+TheApix
 telegraph==2.2.0
 telethon==1.33.1
 tgcrypto
@@ -42,4 +43,3 @@ yt-dlp
 https://github.com/KurimuzonAkuma/pyrogram/archive/v2.1.23.zip
 git+https://github.com/AsmSafone/SafoneAPI
 git+https://github.com/yasirarism/privatebin-api
-git+https://github.com/Vivekkumar-IN/TheApi@main
