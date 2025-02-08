@@ -27,12 +27,12 @@ async def cat(_client: Client, message: Message):
         cat_url = data[0]["url"]
         if cat_url.endswith(".gif"):
             await message.reply_animation(
-                cat_url, caption="🐱 **𝗠𝗲𝗼𝘄**", reply_markup=close_keyboard
+                cat_url, caption="🐱 Miaw", reply_markup=close_keyboard
             )
         else:
-            await message.reply_photo(cat_url, caption="🐱 **𝗠𝗲𝗼𝘄**", reply_markup=close_keyboard)
+            await message.reply_photo(cat_url, caption="🐱 Miaw", reply_markup=close_keyboard)
     else:
-        await message.reply_text("🙀 **Gagal mencari foto kucing!**")
+        await message.reply_text("🙀 Gagal mencari foto kucing!")
 
 
 @app.on_callback_query(filters.regex("refresh_cat") & ~BANNED_USERS)
@@ -43,14 +43,13 @@ async def refresh_cat(_client: Client, callback_query: CallbackQuery):
         cat_url = data[0]["url"]
         if cat_url.endswith(".gif"):
             await callback_query.edit_message_media(
-                InputMediaAnimation(media=cat_url, caption="🐱 **𝗠𝗲𝗼𝘄**"),
+                InputMediaAnimation(media=cat_url, caption="🐱 Miaw"),
                 reply_markup=close_keyboard,
             )
         else:
             await callback_query.edit_message_media(
-                InputMediaPhoto(media=cat_url, caption="🐱 **𝗠𝗲𝗼𝘄**"),
+                InputMediaPhoto(media=cat_url, caption="🐱 Miaw"),
                 reply_markup=close_keyboard,
             )
     else:
-        await callback_query.edit_message_text("🙀 **Gagal mencari foto kucing!**")
-
+        await callback_query.edit_message_text("🙀 Gagal mencari foto kucing!")
