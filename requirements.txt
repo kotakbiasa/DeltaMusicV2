@@ -31,7 +31,7 @@ speedtest-cli
 spotipy
 TheApix
 telegraph==2.2.0
-telethon==1.33.1
+telethon==1.38.1
 tgcrypto
 unidecode
 wget
