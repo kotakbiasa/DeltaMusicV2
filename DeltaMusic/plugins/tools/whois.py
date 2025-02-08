@@ -4,7 +4,7 @@ from pyrogram.errors import PeerIdInvalid
 from pyrogram.types import Message, User
 
 
-def cek_balasan(message: Message):
+def reply_check(message: Message):
     reply_id = None
 
     if message.reply_to_message:
@@ -18,11 +18,11 @@ def cek_balasan(message: Message):
 
 infotext = (
     "[{full_name}](tg://user?id={user_id})\n\n"
-    " ➻ ID Pengguna: `{user_id}`\n"
-    " ➻ Nama Depan: `{first_name}`\n"
-    " ➻ Nama Belakang: `{last_name}`\n"
-    " ➻ Nama Pengguna: `@{username}`\n"
-    " ➻ Terakhir kali online: `{last_online}`"
+    " ➻ 𝗨𝘀𝗲𝗿 𝗜𝗗: `{user_id}`\n"
+    " ➻ 𝗣𝗿𝗶𝗺𝗲𝗶𝗿𝗼 𝗡𝗼𝗺𝗲: `{first_name}`\n"
+    " ➻ 𝗨́𝗹𝘁𝗶𝗺𝗼 𝗡𝗼𝗺𝗲: `{last_name}`\n"
+    " ➻ 𝗨𝘀𝗲𝗿𝗻𝗮𝗺𝗲: `@{username}`\n"
+    " ➻ 𝗨́𝗹𝘁𝗶𝗺𝗮 𝘃𝗲𝘇 𝗼𝗻𝗹𝗶𝗻𝗲: `{last_online}`"
 )
 
 
@@ -30,15 +30,15 @@ def last_online(user: User):
     if user.is_bot:
         return ""
     elif user.status == "recently":
-        return "baru saja"
+        return "𝗿𝗲𝗰𝗲𝗻𝘁𝗲𝗺𝗲𝗻𝘁𝗲"
     elif user.status == "within_week":
-        return "dalam minggu ini"
+        return "𝗻𝗼 𝘂́𝗹𝘁𝗶𝗺𝗼 𝘀𝗲𝗺𝗮𝗻𝗮"
     elif user.status == "within_month":
-        return "dalam bulan ini"
+        return "𝗻𝗼 𝘂́𝗹𝘁𝗶𝗺𝗼 𝗺𝗲̂𝘀"
     elif user.status == "long_time_ago":
-        return "sudah lama sekali :("
+        return "𝗵𝗮́ 𝗺𝘂𝗶𝘁𝗼 𝘁𝗲𝗺𝗽𝗼 :("
     elif user.status == "online":
-        return "sedang online"
+        return "𝗮𝗰𝘁𝘂𝗮𝗹𝗺𝗲𝗻𝘁𝗲 𝗼𝗻𝗹𝗶𝗻𝗲"
     elif user.status == "offline":
         return datetime.fromtimestamp(user.status.date).strftime(
             "%a, %d %b %Y, %H:%M:%S"
@@ -65,10 +65,10 @@ async def whois(client, message):
     try:
         user = await client.get_users(get_user)
     except PeerIdInvalid:
-        await message.reply("Tidak mengenal pengguna ini.")
+        await message.reply("Não conheço este usuário.")
         return
-        desc = await client.get_chat(get_user)
-        desc = desc.description
+    desc = await client.get_chat(get_user)
+    desc = desc.description
     await message.reply_text(
         infotext.format(
             full_name=full_name(user),
@@ -78,25 +78,25 @@ async def whois(client, message):
             last_name=user.last_name if user.last_name else "",
             username=user.username if user.username else "",
             last_online=last_online(user),
-            bio=desc if desc else "Kosong.",
+            bio=desc if desc else "𝗩𝗮𝘇𝗶𝗼.",
         ),
         disable_web_page_preview=True,
     )
 
 
-__MODULE__ = "🆔 Info"
+__MODULE__ = "🆔 𝗜𝗻𝗳𝗼"
 __HELP__ = """
-**Perintah:**
+**Comando:**
 
-• /whois - **Memeriksa informasi pengguna.**
+• /whois - **𝗩𝗲𝗿𝗶𝗳𝗶𝗰𝗮𝗿 𝗶𝗻𝗳𝗼𝗿𝗺𝗮𝗰̧𝗮̃𝗼 𝗱𝗼 𝘂𝘀𝘂𝗮́𝗿𝗶𝗼.**
 
-**Informasi:**
+**𝗜𝗻𝗳𝗼𝗿𝗺𝗮𝗰̧𝗼̃𝗲𝘀:**
 
-- Bot ini menyediakan perintah untuk memeriksa informasi pengguna.
-- Gunakan perintah /whois diikuti dengan membalas pesan atau User ID untuk mendapatkan informasi pengguna.
+- 𝗘𝘀𝘁𝗲 𝗯𝗼𝘁 𝗽𝗿𝗼𝘃𝗶𝗱𝗲𝗻𝗰𝗶𝗮 𝘂𝗺 𝗰𝗼𝗺𝗮𝗻𝗱𝗼 𝗽𝗮𝗿𝗮 𝘃𝗲𝗿𝗶𝗳𝗶𝗰𝗮𝗿 𝗶𝗻𝗳𝗼𝗿𝗺𝗮𝗰̧𝗮̃𝗼 𝗱𝗲 𝘂𝘀𝘂𝗮́𝗿𝗶𝗼.
+- 𝗨𝘀𝗲 𝗼 𝗰𝗼𝗺𝗮𝗻𝗱𝗼 /whois 𝘀𝗲𝗴𝘂𝗶𝗱𝗼 𝗽𝗼𝗿 𝘂𝗺𝗮 𝗿𝗲𝘀𝗽𝗼𝘀𝘁𝗮 𝗮 𝘂𝗺𝗮 𝗺𝗲𝗻𝘀𝗮𝗴𝗲𝗺 𝗼𝘂 𝗨𝘀𝗲𝗿 𝗜𝗗 𝗽𝗮𝗿𝗮 𝗼𝗯𝘁𝗲𝗿 𝗶𝗻𝗳𝗼𝗿𝗺𝗮𝗰̧𝗮̃𝗼 𝗱𝗼 𝘂𝘀𝘂𝗮́𝗿𝗶𝗼.
 
-**Catatan:**
+**𝗡𝗼𝘁𝗮:**
 
-- Perintah /whois dapat digunakan untuk mengembalikan informasi tentang pengguna di chat.
-- Informasi termasuk ID, Nama Depan, Nama Belakang, Username, dan status online.
+- 𝗢 𝗰𝗼𝗺𝗮𝗻𝗱𝗼 /whois 𝗽𝗼𝗱𝗲 𝘀𝗲𝗿 𝘂𝘀𝗮𝗱𝗼 𝗽𝗮𝗿𝗮 𝗿𝗲𝘁𝗿𝗶𝗯𝘂𝗶𝗿 𝗶𝗻𝗳𝗼𝗿𝗺𝗮𝗰̧𝗼̃𝗲𝘀 𝘀𝗼𝗯𝗿𝗲 𝗼 𝘂𝘀𝘂𝗮́𝗿𝗶𝗼 𝗻𝗼 𝗰𝗵𝗮𝘁.
+- 𝗔𝘀 𝗶𝗻𝗳𝗼𝗿𝗺𝗮𝗰̧𝗼̃𝗲𝘀 𝗶𝗻𝗰𝗹𝘂𝗶𝗺 𝗜𝗗, 𝗣𝗿𝗶𝗺𝗲𝗶𝗿𝗼 𝗡𝗼𝗺𝗲, 𝗨́𝗹𝘁𝗶𝗺𝗼 𝗡𝗼𝗺𝗲, 𝗨𝘀𝗲𝗿𝗻𝗮𝗺𝗲 𝗲 𝘀𝘁𝗮𝘁𝘂𝘀 𝗼𝗻𝗹𝗶𝗻𝗲.
 """
