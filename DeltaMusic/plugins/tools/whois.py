@@ -84,19 +84,3 @@ async def whois(client, message):
     )
 
 
-__MODULE__ = "🆔 Info"
-__HELP__ = """
-**Perintah:**
-
-• /whois - **Memeriksa informasi pengguna.**
-
-**Informasi:**
-
-- Bot ini menyediakan perintah untuk memeriksa informasi pengguna.
-- Gunakan perintah /whois diikuti dengan balasan pesan atau ID Pengguna untuk mendapatkan informasi pengguna.
-
-**Catatan:**
-
-- Perintah /whois dapat digunakan untuk mengembalikan informasi tentang pengguna di chat.
-- Informasi termasuk ID, Nama Pertama, Nama Akhir, Username, dan status online.
-"""

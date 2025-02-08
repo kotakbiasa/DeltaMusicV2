@@ -2,7 +2,7 @@ import re
 
 import requests
 from DeltaMusic import app
-from config import LOG_GROUP_ID
+from config import LOGGER_ID
 from pyrogram import filters
 from pyrogram.types import Message
 
@@ -34,8 +34,8 @@ async def download_instagram_video(_, message: Message):
             await a.edit(f)
         except Exception:
             await message.reply_text(f)
-            return await app.send_message(LOG_GROUP_ID, f)
-        return await app.send_message(LOG_GROUP_ID, f)
+            return await app.send_message(LOGGER_ID, f)
+        return await app.send_message(LOGGER_ID, f)
     if not result["error"]:
         video_url = data["url"]
         duration = data["duration"]
