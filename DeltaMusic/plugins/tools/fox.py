@@ -21,35 +21,40 @@ close_keyboard = InlineKeyboardMarkup(
 
 @app.on_message(filters.command(["fox"]) & ~BANNED_USERS)
 async def fox(_client: Client, message: Message):
-    r = requests.get("https://randomfox.ca/floof/")
-    if r.status_code == 200:
+    try:
+        r = requests.get("https://randomfox.ca/floof/", timeout=10)
+        r.raise_for_status()
         data = r.json()
-        fox_url = data["url"]
-        if fox_url.endswith(".gif"):
+        fox_url = data["image"] # Extract image URL
+
+        if fox_url.endswith((".gif", ".mp4")):  # Check for both GIF and MP4
             await message.reply_animation(fox_url, reply_markup=close_keyboard)
         else:
             await message.reply_photo(fox_url, reply_markup=close_keyboard)
-    else:
-        await message.reply_text("🦊 Gagal mencari foto rubah!")
+
+    except requests.exceptions.RequestException as e:
+        await message.reply_text(f"🦊 Gagal mencari foto rubah! Error: {e}")
+    except KeyError as e:
+        await message.reply_text(f"🦊 Gagal mencari foto rubah! Data tak valid: {e}")
+
+
 
 
 @app.on_callback_query(filters.regex("refresh_fox") & ~BANNED_USERS)
 async def refresh_fox(_client: Client, callback_query: CallbackQuery):
     try:
-        r = requests.get("https://randomfox.ca/floof/", timeout=10)  # Add timeout for robustness
-        r.raise_for_status()  # Raise HTTPError for bad responses (4xx or 5xx)
+        r = requests.get("https://randomfox.ca/floof/", timeout=10)
+        r.raise_for_status()
         data = r.json()
-        fox_url = data["url"]  # Access "url" directly
+        fox_url = data["image"] # Extract image URL
 
-        if fox_url.endswith(".mp4"): # Check if it's an mp4, since random.dog sometimes returns videos
-            await callback_query.edit_message_media(InputMediaVideo(media=fox_url), reply_markup=close_keyboard)
-        elif fox_url.endswith(".gif"):
+        if fox_url.endswith((".gif", ".mp4")):  # Check for both GIF and MP4
             await callback_query.edit_message_media(InputMediaAnimation(media=fox_url), reply_markup=close_keyboard)
         else:
             await callback_query.edit_message_media(InputMediaPhoto(media=fox_url), reply_markup=close_keyboard)
 
     except requests.exceptions.RequestException as e:
         await callback_query.edit_message_text(f"🦊 Gagal mencari foto rubah! Error: {e}")
-    except KeyError as e:  # Handle potential KeyError if 'url' is missing
+    except KeyError as e:
         await callback_query.edit_message_text(f"🦊 Gagal mencari foto rubah! Data tak valid: {e}")
 
