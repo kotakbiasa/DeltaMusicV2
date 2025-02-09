@@ -17,7 +17,7 @@ async def wall(_, message: Message):
             "⚠️ Harap berikan kata kunci untuk pencarian.")
     m = await message.reply_text("🔍")
     try:
-        url = requests.get(f"https://api.safone.dev/wall?query={text}").json()[
+        url = requests.get(f"https://api.safone.co/wall?query={text}").json()[
             "results"
         ]
         ran = random.randint(0, 7)
