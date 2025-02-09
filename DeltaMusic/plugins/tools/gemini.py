@@ -4,6 +4,7 @@ from DeltaMusic import app
 from pyrogram import filters, Client
 from pyrogram.enums import ChatAction
 from pyrogram.types import Message
+from DeltaMusic.utils.decorators import language  # Import the language decorator
 from strings import get_string  # Assuming you have a strings file for localization
 
 async def gemini_chatbot(client, message: Message, strings):
