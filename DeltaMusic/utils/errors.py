@@ -35,11 +35,9 @@ def capture_err(func):
             await app.leave_chat(message.chat.id)
             return
         except Exception as err:
-            exc_type, exc_obj, exc_tb = sys.exc_info()
+            exc_type, exc_value, exc_tb = sys.exc_info()  # Corrected line
             errors = traceback.format_exception(
-                etype=exc_type,
-                value=exc_obj,
-                tb=exc_tb,
+                exc_type, exc_value, exc_tb  # Corrected line
             )
             error_feedback = split_limits(
                 "**ERROR** | `{}` | `{}`\n\n```{}```\n\n```{}```\n".format(
@@ -51,6 +49,6 @@ def capture_err(func):
             )
             for x in error_feedback:
                 await app.send_message(LOGGER, x)
-            raise err
+            raise err  # Or you might want to handle the error differently
 
     return capture
