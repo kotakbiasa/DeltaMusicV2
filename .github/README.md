@@ -1,24 +1,24 @@
 ━━━━━━━━━━━━━━━━━━━━
 
 <h2 align="center">
-    ──「⛦🦋 𝗗𝗘𝗟𝗧𝗔 ✘ 𝗠𝗨𝗦𝗜𝗖 🦋⛦」──
+    ──「𝗗𝗘𝗟𝗧𝗔 𝗠𝗨𝗦𝗜𝗖」──
 </h2>
 
 <p align="center">
-  <img src="https://telegra.ph/file/d02b81736a7e9519c6386.jpg">
+  <img src="https://envs.sh/yJN.mp4">
 </p>
 
 <p align="center">
-<a href="https://github.com/kotakbissa/DeltaStreamV2/stargazers"><img src="https://img.shields.io/github/stars/kotakbissa/DeltaStreamV2?color=black&logo=github&logoColor=black&style=for-the-badge" alt="Stars" /></a>
-<a href="https://github.com/kotakbissa/DeltaStreamV2/network/members"> <img src="https://img.shields.io/github/forks/kotakbissa/DeltaStreamV2?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
-<a href="https://github.com/kotakbissa/DeltaStreamV2/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License-MIT-blueviolet?style=for-the-badge" alt="License" /> </a>
+<a href="https://github.com/kotakbiasa/DeltaMusicV2/stargazers"><img src="https://img.shields.io/github/stars/kotakbiasa/DeltaStreamV2?color=black&logo=github&logoColor=black&style=for-the-badge" alt="Stars" /></a>
+<a href="https://github.com/kotakbiasa/DeltaMusicV2/network/members"> <img src="https://img.shields.io/github/forks/kotakbiasa/DeltaMusicV2?color=black&logo=github&logoColor=black&style=for-the-badge" /></a>
+<a href="https://github.com/kotakbiasa/DeltaMusicV2/blob/master/LICENSE"> <img src="https://img.shields.io/badge/License-MIT-blueviolet?style=for-the-badge" alt="License" /> </a>
 <a href="https://www.python.org/"> <img src="https://img.shields.io/badge/Written%20in-Python-orange?style=for-the-badge&logo=python" alt="Python" /> </a>
-<a href="https://github.com/kotakbissa/DeltaStreamV2/commits/main"> <img src="https://img.shields.io/github/last-commit/kotakbissa/DeltaStreamV2?color=blue&logo=github&logoColor=green&style=for-the-badge" /></a>
+<a href="https://github.com/kotakbiasa/DeltaMusicV2/commits/main"> <img src="https://img.shields.io/github/last-commit/kotakbiasa/DeltaMusicV2?color=blue&logo=github&logoColor=green&style=for-the-badge" /></a>
 </p>
 
 ━━━━━━━━━━━━━━━━━━━━
 </h2>
-<img src="https://readme-typing-svg.herokuapp.com?color=FF0000&width=420&lines=♦𝙳𝙴𝙿𝙻𝙾𝚈+𝙾𝙽+𝙷𝙴𝚁𝙾𝙺𝚄♦;📡+𝙽𝙾+𝙷𝙴𝚁𝙾𝙺𝚄+𝙱𝙰𝙽+𝙸𝚂𝚂𝚄𝙴+𝙰𝙻𝚂𝙾+𝚅𝙿𝚂+𝙳𝙴𝙿𝙻𝙾𝚈+📍+𝙿𝚁𝙴𝚂𝙴𝙽𝚃;❤️+𝙿𝙾𝚆𝙴𝚁𝙴𝙳+𝙱𝚈+𝗗𝗘𝗟𝗧𝗔+𝗞𝗜𝗡𝗚🔥">
+<img src="https://readme-typing-svg.herokuapp.com?color=FF0000&width=420&lines=♦𝙳𝙴𝙿𝙻𝙾𝚈+𝙾𝙽+𝙷𝙴𝚁𝙾𝙺𝚄♦;📡+𝙽𝙾+𝙷𝙴𝚁𝙾𝙺𝚄+𝙱𝙰𝙽+𝙸𝚂𝚂𝚄𝙴+𝙰𝙻𝚂𝙾+𝚅𝙿𝚂+𝙳𝙴𝙿𝙻𝙾𝚈+📍+𝙿𝚁𝙴𝚂𝙴𝙽𝚃;❤️+𝙿𝙾𝚆𝙴𝚁𝙴𝙳+𝙱𝚈++Kotak+Biasa🔥">
 
 <p align="center">
   <img src="https://telegra.ph/file/925eade709484516c5fe3.jpg">
