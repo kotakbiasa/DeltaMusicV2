@@ -221,7 +221,7 @@ async def view_movie(_client: Client, callback_query: CallbackQuery):
             streamtype="index",
         )
     except Exception:
-        ex_type = type(e).__name__
+        ex_type = type(Exception).__name__
         if ex_type == "AssistantErr":
             err = e
         else:
