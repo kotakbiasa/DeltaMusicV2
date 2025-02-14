@@ -881,59 +881,7 @@ async def save_audio_bitrate(chat_id: int, bitrate: str):
 
 
 async def save_video_bitrate(chat_id: int, bitrate: str):
-    video[chat_id] = bitrate
-
-
-async def get_aud_bit_name(chat_id: int) -> str:
-    mode = audio.get(chat_id)
-    if not mode:
-        return "HIGH"
-    return mode
-
-
-async def get_vid_bit_name(chat_id: int) -> str:
-    mode = video.get(chat_id)
-    if not mode:
-        if PRIVATE_BOT_MODE == str(True):
-            return "HD_720p"
-        else:
-            return "HD_720p"
-    return mode
-
-
-async def get_audio_bitrate(chat_id: int) -> str:
-    mode = audio.get(chat_id)
-    if not mode:
-        return AudioQuality.STUDIO
-    if str(mode) == "STUDIO":
-        return AudioQuality.STUDIO
-    elif str(mode) == "HIGH":
-        return AudioQuality.HIGH
-    elif str(mode) == "MEDIUM":
-        return AudioQuality.MEDIUM
-    elif str(mode) == "LOW":
-        return AudioQuality.LOW
-
-
-async def get_video_bitrate(chat_id: int) -> str:
-    mode = video.get(chat_id)
-    if not mode:
-        if PRIVATE_BOT_MODE == str(True):
-            return VideoQuality.FHD_1080p
-        else:
-            return VideoQuality.HD_720p
-    if str(mode) == "UHD_4K":
-        return VideoQuality.UHD_4K
-    elif str(mode) == "QHD_2K":
-        return VideoQuality.QHD_2K
-    elif str(mode) == "FHD_1080p":
-        return VideoQuality.FHD_1080p
-    elif str(mode) == "HD_720p":
-        return VideoQuality.HD_720p
-    elif str(mode) == "SD_480p":
-        return VideoQuality.SD_480p
-    elif str(mode) == "SD_360p":
-        return VideoQuality.SD_360p"""
+    video[chat_id] = bitrate"""
 
 
 async def is_served_user_clone(user_id: int) -> bool:
@@ -982,3 +930,47 @@ async def delete_served_chat_clone(chat_id: int):
     await chatsdbc.delete_one({"chat_id": chat_id})
 
 
+audio = load_data(AUDIO_FILE)
+video = load_data(VIDEO_FILE)
+
+
+async def save_audio_bitrate(chat_id: int, bitrate: str):
+    audio[str(chat_id)] = bitrate
+    save_data(AUDIO_FILE, audio)
+
+
+async def save_video_bitrate(chat_id: int, bitrate: str):
+    video[str(chat_id)] = bitrate
+    save_data(VIDEO_FILE, video)
+    
+
+async def get_aud_bit_name(chat_id: int) -> str:
+    return audio.get(str(chat_id), "HIGH")
+
+
+async def get_vid_bit_name(chat_id: int) -> str:
+    return video.get(str(chat_id), "HD_720p")
+
+
+async def get_audio_bitrate(chat_id: int) -> AudioQuality:
+    mode = audio.get(str(chat_id), "MEDIUM")
+    return {
+        "STUDIO": AudioQuality.STUDIO,
+        "HIGH": AudioQuality.HIGH,
+        "MEDIUM": AudioQuality.MEDIUM,
+        "LOW": AudioQuality.LOW,
+    }.get(mode, AudioQuality.MEDIUM)
+
+
+async def get_video_bitrate(chat_id: int) -> VideoQuality:
+    mode = video.get(
+        str(chat_id), "SD_480p"
+    )  # Ensure chat_id is a string for JSON compatibility
+    return {
+        "UHD_4K": VideoQuality.UHD_4K,
+        "QHD_2K": VideoQuality.QHD_2K,
+        "FHD_1080p": VideoQuality.FHD_1080p,
+        "HD_720p": VideoQuality.HD_720p,
+        "SD_480p": VideoQuality.SD_480p,
+        "SD_360p": VideoQuality.SD_360p,
+    }.get(mode, VideoQuality.SD_480p)
