@@ -73,11 +73,8 @@ TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", 1073741824))
 
 # Get your pyrogram v2 session from @DeltaMusicSessionBot on Telegram
 STRING1 = getenv("STRING_SESSION",  None)
-STRING2 = getenv("STRING_SESSION2", None)
-STRING3 = getenv("STRING_SESSION3", None)
-STRING4 = getenv("STRING_SESSION4", None)
-STRING5 = getenv("STRING_SESSION5", None)
 
+TEMP_DB_FOLDER = "tempdb"
 
 BANNED_USERS = filters.user()
 adminlist = {}
