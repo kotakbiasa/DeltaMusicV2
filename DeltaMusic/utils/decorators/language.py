@@ -1,8 +1,6 @@
 from strings import get_string
 from DeltaMusic.misc import SUDOERS
-from DeltaMusic.utils.database import get_lang, is_maintenance
-from pyrogram.errors import FloodWait
-import asyncio
+from DeltaMusic.utils.database import (get_lang, is_maintenance)
 
 
 def language(mystic):
@@ -22,16 +20,8 @@ def language(mystic):
             language = await get_lang(message.chat.id)
             language = get_string(language)
         except:
-            language = get_string("en")
-        return await wrapper_with_retry(_, message, language)
-
-    async def wrapper_with_retry(_, message, language):
-        try:
-            return await mystic(_, message, language)
-        except FloodWait as e:
-            print(f"Flood wait of {e.value} seconds required")
-            await asyncio.sleep(e.value)
-            return await wrapper_with_retry(_, message, language)
+            language = get_string("id")
+        return await mystic(_, message, language)
 
     return wrapper
 
@@ -48,16 +38,8 @@ def languageCB(mystic):
             language = await get_lang(CallbackQuery.message.chat.id)
             language = get_string(language)
         except:
-            language = get_string("en")
-        return await wrapper_with_retry(_, CallbackQuery, language)
-
-    async def wrapper_with_retry(_, CallbackQuery, language):
-        try:
-            return await mystic(_, CallbackQuery, language)
-        except FloodWait as e:
-            print(f"Flood wait of {e.value} seconds required")
-            await asyncio.sleep(e.value)
-            return await wrapper_with_retry(_, CallbackQuery, language)
+            language = get_string("id")
+        return await mystic(_, CallbackQuery, language)
 
     return wrapper
 
@@ -68,15 +50,7 @@ def LanguageStart(mystic):
             language = await get_lang(message.chat.id)
             language = get_string(language)
         except:
-            language = get_string("en")
-        return await wrapper_with_retry(_, message, language)
-
-    async def wrapper_with_retry(_, message, language):
-        try:
-            return await mystic(_, message, language)
-        except FloodWait as e:
-            print(f"Flood wait of {e.value} seconds required")
-            await asyncio.sleep(e.value)
-            return await wrapper_with_retry(_, message, language)
+            language = get_string("id")
+        return await mystic(_, message, language)
 
     return wrapper
