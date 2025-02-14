@@ -206,20 +206,21 @@ async def view_movie(_client: Client, callback_query: CallbackQuery):
     file = files[page_index * RESULTS_PER_PAGE + idx - 1]
     name = file.get("name", "<b>Tanpa judul</b>")
     link = file.get("link", "#")
+    link = Platform.animezey.base_url + link
 
     try:
         await stream(
             _,
             mystic=callback_query.message,
             user_id=user_id,
-            result={"title": name, "link": Platform.animezey.base_url + link},
+            result={"title": name, "link": link},
             chat_id=callback_query.message.chat.id,
             user_name=callback_query.from_user.first_name,
             original_chat_id=callback_query.message.chat.id,
             video=True,
             streamtype="index",
         )
-    except Exception as e:
+    except Exception:
         ex_type = type(e).__name__
         if ex_type == "AssistantErr":
             err = e

@@ -29,6 +29,7 @@ SafoneAPI
 search_engine_parser
 speedtest-cli
 spotipy
+SafoneAPI
 TheApix
 telegraph==2.2.0
 telethon==1.33.1
@@ -41,5 +42,4 @@ yt-dlp
 #git+https://github.com/joetats/youtube_search@master
 #git+https://github.com/alexmercerind/youtube-search-python@main
 https://github.com/KurimuzonAkuma/pyrogram/archive/v2.1.23.zip
-git+https://github.com/AsmSafone/SafoneAPI
 git+https://github.com/yasirarism/privatebin-api

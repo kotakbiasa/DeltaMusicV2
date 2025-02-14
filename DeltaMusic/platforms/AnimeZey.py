@@ -295,7 +295,7 @@ class AnimeZey:
             duration_str = f"{minutes}:{seconds:02d}"
             return duration_str
         except Exception as e:
-            print(f"Erro ao obter duração: {e}")
+            print(f"Error getting duration: {e}")
             return "Erro ao calcular duração"
 
     async def get_filepath(self, file_name: str) -> str:
