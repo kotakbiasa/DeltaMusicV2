@@ -29,8 +29,8 @@ def language(mystic):
         try:
             return await mystic(_, message, language)
         except FloodWait as e:
-            print(f"Flood wait of {e.x} seconds required")
-            await asyncio.sleep(e.x)
+            print(f"Flood wait of {e.value} seconds required")
+            await asyncio.sleep(e.value)
             return await wrapper_with_retry(_, message, language)
 
     return wrapper
@@ -55,8 +55,8 @@ def languageCB(mystic):
         try:
             return await mystic(_, CallbackQuery, language)
         except FloodWait as e:
-            print(f"Flood wait of {e.x} seconds required")
-            await asyncio.sleep(e.x)
+            print(f"Flood wait of {e.value} seconds required")
+            await asyncio.sleep(e.value)
             return await wrapper_with_retry(_, CallbackQuery, language)
 
     return wrapper
@@ -75,8 +75,8 @@ def LanguageStart(mystic):
         try:
             return await mystic(_, message, language)
         except FloodWait as e:
-            print(f"Flood wait of {e.x} seconds required")
-            await asyncio.sleep(e.x)
+            print(f"Flood wait of {e.value} seconds required")
+            await asyncio.sleep(e.value)
             return await wrapper_with_retry(_, message, language)
 
     return wrapper
