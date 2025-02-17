@@ -30,6 +30,3 @@ YouTube = YouTubeAPI()
 
 APP = "BRANDED_KUDI_BOT"  # connect music api key "Dont change it"
 
-from .platforms import PlaTForms
-
-Platform = PlaTForms()
