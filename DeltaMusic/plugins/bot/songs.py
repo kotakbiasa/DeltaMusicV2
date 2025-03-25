@@ -19,7 +19,7 @@ from config import (
 from DeltaMusic import YouTube, app
 from DeltaMusic.utils.decorators.language import language, languageCB
 from DeltaMusic.utils.formatters import convert_bytes 
-from DeltaMusic.platforms.YouTube import cookie_txt_file
+from DeltaMusic.platforms.Youtube import cookie_txt_file
 from DeltaMusic.utils.inline.song import song_markup
 
 # Modul Lagu
