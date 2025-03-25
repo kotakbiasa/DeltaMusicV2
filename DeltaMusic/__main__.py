@@ -1,10 +1,12 @@
-import asyncio
+import asyncio 
+import aiorun
 import importlib
 from sys import argv
 from pyrogram import idle
 from pytgcalls.exceptions import NoActiveGroupCall
 
-import config
+import config 
+from aiorun import run
 from DeltaMusic import LOGGER, app, userbot
 from DeltaMusic.core.call import Hotty
 from DeltaMusic.misc import sudo
