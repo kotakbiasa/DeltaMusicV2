@@ -19,7 +19,6 @@ from config import (
 from DeltaMusic import YouTube, app
 from DeltaMusic.utils.decorators.language import language, languageCB
 from DeltaMusic.utils.formatters import convert_bytes 
-from DeltaMusic.platforms.Youtube import cookie_txt_file
 from DeltaMusic.utils.inline.song import song_markup
 
 # Modul Lagu
@@ -208,7 +207,7 @@ async def song_download_cb(client, callback_query: CallbackQuery, _) :
     stype, format_id, vidid = callback_request.split("|")
     mystic = await callback_query.edit_message_text(_["song_8"])
     yturl = f"https://www.youtube.com/watch?v={vidid}"
-    with yt_dlp.YoutubeDL({"quiet": True, "cookies": cookie_txt_file}) as ytdl:
+    with yt_dlp.YoutubeDL({"quiet": True, "cookies": cookies}) as ytdl:
         x = ytdl.extract_info(yturl, download=False)
     title = (x["title"]).title()
     title = re.sub("\W+", " ", title)
