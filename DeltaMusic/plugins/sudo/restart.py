@@ -27,13 +27,38 @@ async def is_heroku():
     return "heroku" in socket.getfqdn()
 
 
-@app.on_message(filters.command(["getlog", "logs", "getlogs"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]) & SUDOERS)
-@language
-async def log_(client, message, _):
-    try:
-        await message.reply_document(document="log.txt")
-    except:
-        await message.reply_text(_["server_1"])
+@app.on_message(filters.command("logs") & SUDOERS)
+async def log_file(_, ctx: Message):
+    """Send log file"""
+    msg = await ctx.edit("<b>Reading bot logs ...</b>")
+    
+    if len(ctx.command) == 1:
+        try:
+            # Membaca konten dari file log
+            with open("log.txt", "r") as file:
+                content = file.read()
+            
+            # Mengirim log ke PrivateBin
+            pastelog = await privatebinapi.send_async(
+                "https://bin.yasirweb.eu.org", 
+                text=content, 
+                expiration="1week", 
+                formatting="syntaxhighlighting"
+            )
+            
+            # Mengedit pesan dengan link ke log
+            await msg.edit(
+                f"<a href='{pastelog['full_url']}'>Here the Logs</a>\nlog size: {get_readable_file_size(os.path.getsize('log.txt'))}"
+            )
+        
+        except FileNotFoundError:
+            await msg.edit("Log file not found.")
+        except Exception as e:
+            await ctx.reply_document(
+                "log.txt",
+                caption="Log Bot FeedBack"
+            )
+            await msg.delete()
 
 
 @app.on_message(filters.command(["update", "gitpull"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]) & SUDOERS)
