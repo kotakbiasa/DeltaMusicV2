@@ -13,6 +13,9 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from DeltaMusic import app
 from DeltaMusic.misc import SUDOERS
 
+# Ensure SUDOERS contains only integers (user IDs)
+SUDOERS = {int(user) for user in SUDOERS if isinstance(user, (int, str))}
+
 async def aexec(code, client, message):
     exec(
         "async def __aexec(client, message): "

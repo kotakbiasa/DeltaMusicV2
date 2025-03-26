@@ -16,6 +16,11 @@ from DeltaMusic.utils.database import get_banned_users, get_gbanned
 from config import BANNED_USERS
 
 
+async def sudo():
+    global SUDOERS
+    # Ensure SUDOERS contains only integers (user IDs)
+    SUDOERS = {int(user) for user in SUDOERS if isinstance(user, (int, str))}
+
 async def init():
     if (
         not config.STRING1
