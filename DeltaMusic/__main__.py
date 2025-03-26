@@ -33,7 +33,7 @@ async def load_banned_users():
 def import_modules():
     """Mengimpor semua modul secara sinkron."""
     for mod in ALL_MODULES:
-        importlib.import_module(f"DeltaMusic.plugins{mod}")
+        importlib.import_module(f"DeltaMusic.plugins.{mod}")  # Perbaiki format string
     LOGGER("YukkiMusic.plugins").info("Successfully Imported Modules")
 
 
@@ -81,6 +81,10 @@ async def init():
     asyncio.create_task(start_stream())  # Jalankan stream di latar belakang tanpa menunggu
 
     LOGGER("YukkiMusic").info("Yukki Music Bot Started Successfully")
+
+    # **Panggil async function setelah event loop berjalan**
+    asyncio.create_task(markup_timer())  # Pastikan fungsi ini dipanggil dalam event loop
+
     await idle()
 
 
