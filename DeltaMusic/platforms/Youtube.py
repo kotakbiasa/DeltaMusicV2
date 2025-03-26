@@ -12,6 +12,7 @@ from youtubesearchpython.__future__ import VideosSearch
 from DeltaMusic.utils.database import is_on_off
 from DeltaMusic.utils.formatters import time_to_seconds
 
+cook = "memek.txt"
 
 
 import os
@@ -128,7 +129,7 @@ class YouTubeAPI:
             link = link.split("&")[0]
         proc = await asyncio.create_subprocess_exec(
             "yt-dlp",
-            "--cookies",memek.txt,
+            "--cookies",memek,
             "-g",
             "-f",
             "best[height<=?720][width<=?1280]",
@@ -148,7 +149,7 @@ class YouTubeAPI:
         if "&" in link:
             link = link.split("&")[0]
         playlist = await shell_cmd(
-            f"yt-dlp -i --get-id --flat-playlist --cookies {memek.txt} --playlist-end {limit} --skip-download {link}"
+            f"yt-dlp -i --get-id --flat-playlist --cookies {memek} --playlist-end {limit} --skip-download {link}"
         )
         try:
             result = playlist.split("\n")
@@ -185,7 +186,7 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-        ytdl_opts = {"quiet": True, "cookiefile" : memek.txt}
+        ytdl_opts = {"quiet": True, "cookiefile" : memek}
         ydl = yt_dlp.YoutubeDL(ytdl_opts)
         with ydl:
             formats_available = []
@@ -255,7 +256,7 @@ class YouTubeAPI:
                 "geo_bypass": True,
                 "nocheckcertificate": True,
                 "quiet": True,
-                "cookiefile" : memek.txt,
+                "cookiefile" : memek,
                 "no_warnings": True,
             }
             x = yt_dlp.YoutubeDL(ydl_optssx)
@@ -273,7 +274,7 @@ class YouTubeAPI:
                 "geo_bypass": True,
                 "nocheckcertificate": True,
                 "quiet": True,
-                "cookiefile" : memek.txt,
+                "cookiefile" : memek,
                 "no_warnings": True,
             }
             x = yt_dlp.YoutubeDL(ydl_optssx)
@@ -294,7 +295,7 @@ class YouTubeAPI:
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
-                "cookiefile" : memek.txt,
+                "cookiefile" : memek,
                 "prefer_ffmpeg": True,
                 "merge_output_format": "mp4",
             }
@@ -310,7 +311,7 @@ class YouTubeAPI:
                 "nocheckcertificate": True,
                 "quiet": True,
                 "no_warnings": True,
-                "cookiefile" : memek.txt,
+                "cookiefile" : memek,
                 "prefer_ffmpeg": True,
                 "postprocessors": [
                     {
@@ -338,7 +339,7 @@ class YouTubeAPI:
             else:
                 proc = await asyncio.create_subprocess_exec(
                     "yt-dlp",
-                    "--cookies",memek.txt,
+                    "--cookies",memek,
                     "-g",
                     "-f",
                     "best[height<=?720][width<=?1280]",
