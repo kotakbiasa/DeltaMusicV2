@@ -19,7 +19,7 @@ async def load_banned_users():
         users = await get_gbanned()
         for user_id in users:
             BANNED_USERS.add(user_id)
-            await asyncio.sleep(0.5)  # Mencegah flood wait
+            await asyncio.sleep(0.5)  # Delay untuk menghindari flood wait
 
         users = await get_banned_users()
         for user_id in users:
@@ -30,10 +30,10 @@ async def load_banned_users():
         LOGGER("YukkiMusic").error(f"Error saat memuat banned users: {e}")
 
 
-async def import_modules():
-    """Mengimpor semua modul secara paralel di latar belakang."""
-    tasks = [asyncio.to_thread(importlib.import_module, f"DeltaMusic.plugins{mod}") for mod in ALL_MODULES]
-    await asyncio.gather(*tasks)
+def import_modules():
+    """Mengimpor semua modul secara sinkron."""
+    for mod in ALL_MODULES:
+        importlib.import_module(f"DeltaMusic.plugins{mod}")
     LOGGER("YukkiMusic.plugins").info("Successfully Imported Modules")
 
 
@@ -45,9 +45,9 @@ async def start_bot():
     await asyncio.sleep(2)  # Beri jeda sebelum Hotty.start()
     await Hotty.start()
 
-    # Menjalankan operasi di latar belakang
-    asyncio.create_task(load_banned_users())
-    asyncio.create_task(import_modules())
+    # Jalankan proses lain di latar belakang
+    asyncio.create_task(load_banned_users())  # Load banned users tanpa menunggu
+    await asyncio.to_thread(import_modules)  # Import modul tanpa mengganggu event loop utama
 
     LOGGER("YukkiMusic").info("All Clients Started Successfully")
 
@@ -78,7 +78,7 @@ async def init():
         LOGGER("YukkiMusic").warning("No Spotify Vars defined. Your bot won't be able to play spotify queries.")
 
     await start_bot()
-    asyncio.create_task(start_stream())  # Menjalankan stream call di latar belakang
+    asyncio.create_task(start_stream())  # Jalankan stream di latar belakang tanpa menunggu
 
     LOGGER("YukkiMusic").info("Yukki Music Bot Started Successfully")
     await idle()
@@ -86,6 +86,6 @@ async def init():
 
 if __name__ == "__main__":
     try:
-        asyncio.run(init())
+        asyncio.run(init())  # Pastikan event loop berjalan dengan benar
     except KeyboardInterrupt:
         LOGGER("YukkiMusic").info("Stopping Yukki Music Bot! GoodBye")
