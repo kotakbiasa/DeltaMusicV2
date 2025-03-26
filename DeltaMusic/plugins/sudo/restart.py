@@ -10,7 +10,8 @@ from git.exc import GitCommandError, InvalidGitRepositoryError
 from pyrogram import filters
 
 import config
-from DeltaMusic import app
+from DeltaMusic import app 
+from pyrogram.types import Message
 from DeltaMusic.misc import HAPP, SUDOERS, XCB
 from DeltaMusic.utils.database import (
     get_active_chats,
