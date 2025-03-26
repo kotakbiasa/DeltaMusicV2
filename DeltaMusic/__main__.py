@@ -15,10 +15,11 @@ from DeltaMusic.plugins import ALL_MODULES
 from DeltaMusic.utils.database import get_banned_users, get_gbanned
 from config import BANNED_USERS
 
+# Initialize SUDOERS as an empty set or load it from a configuration
+SUDOERS = set()
 
 async def sudo():
     global SUDOERS
-    # Ensure SUDOERS contains only integers (user IDs)
     SUDOERS = {int(user) for user in SUDOERS if isinstance(user, (int, str))}
 
 async def init():
