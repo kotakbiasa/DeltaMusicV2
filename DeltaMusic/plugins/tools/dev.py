@@ -10,11 +10,10 @@ from time import time
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from DeltaMusic import app, SUDOERS
+from DeltaMusic import app
 from config import *
 
 # Ensure SUDOERS contains only integers (user IDs)
-SUDOERS = {int(user) for user in SUDOERS if isinstance(user, (int, str))}
 
 async def aexec(code, client, message):
     exec(
