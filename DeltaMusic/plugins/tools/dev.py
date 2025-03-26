@@ -10,8 +10,8 @@ from time import time
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from DeltaMusic import app
-from DeltaMusic.misc import SUDOERS
+from DeltaMusic import app, SUDOERS
+from config import *
 
 # Ensure SUDOERS contains only integers (user IDs)
 SUDOERS = {int(user) for user in SUDOERS if isinstance(user, (int, str))}
@@ -32,13 +32,13 @@ async def edit_or_reply(msg: Message, **kwargs):
 
 @app.on_edited_message(
     filters.command("eval")
-    & filters.user(SUDOERS)
+    & filters.user(OWNER_ID)
     & ~filters.forwarded
     & ~filters.via_bot
 )
 @app.on_message(
     filters.command("eval")
-    & filters.user(SUDOERS)
+    & filters.user(OWNER_ID)
     & ~filters.forwarded
     & ~filters.via_bot
 )
