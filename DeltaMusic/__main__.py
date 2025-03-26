@@ -30,13 +30,14 @@ async def init():
         LOGGER(__name__).error(f"Error saat mengambil daftar banned users: {e}")
 
     await app.start()
-
+    await asyncio.sleep(1)
     for module in ALL_MODULES:
         importlib.import_module(f"DeltaMusic.plugins.{module}")
 
     LOGGER("DeltaMusic.plugins").info("Berhasil mengimpor semua modul.")
 
-    await userbot.start()
+    await userbot.start() 
+    await asyncio.sleep(1)
     await Hotty.start()
 
     try:
@@ -79,7 +80,9 @@ def handler(loop, context):
         print(f"Stopping loop due to error: {exception}")
     loop.stop()
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
+    import uvloop
+    uvloop.install()
     aiorun.logger.disabled = True
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
