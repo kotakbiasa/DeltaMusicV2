@@ -32,7 +32,7 @@ async def init():
     await app.start()
 
     for module in ALL_MODULES:
-        importlib.import_module("DeltaMusic.plugins" + all_module)
+        importlib.import_module(f"DeltaMusic.plugins.{all_modules}")
 
     LOGGER("DeltaMusic.plugins").info("Berhasil mengimpor semua modul.")
 
