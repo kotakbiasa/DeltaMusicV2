@@ -86,6 +86,6 @@ if __name__ == "__main__":
     loop.set_exception_handler(handler)
 
     try:
-        aiorun.run(init)
+        aiorun.run(init())
     except Exception as e:
         LOGGER("DeltaMusic").error(f"Bot berhenti karena error: {e}")
