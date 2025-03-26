@@ -10,8 +10,7 @@ from time import time
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from DeltaMusic import app
-from config import *
+from DeltaMusic import app, SUDOERS
 
 
 async def aexec(code, client, message):
