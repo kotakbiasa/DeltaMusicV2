@@ -59,10 +59,6 @@ async def init():
     await userbot.stop()
     LOGGER("DeltaMusic").info("Menghentikan Delta Music Bot...")
 
-
-if __name__ == "__main__":
-    asyncio.get_event_loop().run_until_complete(init())
-
 uvloop.install()
 
 async def job():
