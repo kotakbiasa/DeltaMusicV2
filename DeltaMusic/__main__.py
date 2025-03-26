@@ -1,94 +1,72 @@
 import asyncio
-import aiorun
 import importlib
 import sys
-import uvloop
+
 from pyrogram import idle
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
+from config import BANNED_USERS
 from DeltaMusic import LOGGER, app, userbot
 from DeltaMusic.core.call import Hotty
-from DeltaMusic.misc import sudo
 from DeltaMusic.plugins import ALL_MODULES
 from DeltaMusic.utils.database import get_banned_users, get_gbanned
-from config import BANNED_USERS
+
+loop = asyncio.get_event_loop()
+
 
 async def init():
-    """Fungsi utama untuk menginisialisasi bot."""
-    if not any([config.STRING1, config.STRING2, config.STRING3, config.STRING4, config.STRING5]):
-        LOGGER(__name__).error("Variabel klien asisten tidak ditentukan, keluar...")
-        sys.exit()
-
+    if (
+        not config.STRING1
+        and not config.STRING2
+        and not config.STRING3
+        and not config.STRING4
+        and not config.STRING5
+    ):
+        LOGGER("YukkiMusic").error(
+            "No Assistant Clients Vars Defined!.. Exiting Process."
+        )
+        return
+    if (
+        not config.SPOTIFY_CLIENT_ID
+        and not config.SPOTIFY_CLIENT_SECRET
+    ):
+        LOGGER("YukkiMusic").warning(
+            "No Spotify Vars defined. Your bot won't be able to play spotify queries."
+        )
     try:
         users = await get_gbanned()
-        BANNED_USERS.update(users)
-
+        for user_id in users:
+            BANNED_USERS.add(user_id)
         users = await get_banned_users()
-        BANNED_USERS.update(users)
-    except Exception as e:
-        LOGGER(__name__).error(f"Error saat mengambil daftar banned users: {e}")
-
+        for user_id in users:
+            BANNED_USERS.add(user_id)
+    except:
+        pass
     await app.start()
-    await asyncio.sleep(1)
-    for module in ALL_MODULES:
-        importlib.import_module(f"DeltaMusic.plugins.{module}")
-
-    LOGGER("DeltaMusic.plugins").info("Berhasil mengimpor semua modul.")
-
-    await userbot.start() 
-    await asyncio.sleep(1)
+    for all_module in ALL_MODULES:
+        importlib.import_module("YukkiMusic.plugins" + all_module)
+    LOGGER("Yukkimusic.plugins").info(
+        "Successfully Imported Modules "
+    )
+    await userbot.start()
     await Hotty.start()
-
     try:
-        await Hotty.stream_call("https://envs.sh/yJN.mp4")
+        await Hotty.stream_call(
+            "http://docs.evostream.com/sample_content/assets/sintel1m720p.mp4"
+        )
     except NoActiveGroupCall:
-        LOGGER("DeltaMusic").error(
-            "Silakan nyalakan videochat dari grup log/saluran Anda.\n\nMenghentikan Bot..."
+        LOGGER("YukkiMusic").error(
+            "[ERROR] - \n\nPlease turn on your Logger Group's Voice Call. Make sure you never close/end voice call in your log group"
         )
         sys.exit()
-    except Exception as e:
-        LOGGER("DeltaMusic").error(f"Error saat memulai stream: {e}")
-
+    except:
+        pass
     await Hotty.decorators()
-
-    LOGGER("DeltaMusic").info(
-        "Bergabunglah dengan @DeltaStreamChat untuk dukungan dan @KotakBiasaCH untuk pembaruan terbaru!"
-    )
-
+    LOGGER("YukkiMusic").info("Yukki Music Bot Started Successfully")
     await idle()
 
-    await app.stop()
-    await userbot.stop()
 
-    LOGGER("DeltaMusic").info("Menghentikan Delta Music Bot...")
-
-uvloop.install()
-
-async def job():
-    raise Exception("ouch")
-
-async def other_job():
-    try:
-        await asyncio.sleep(10)
-    except asyncio.CancelledError:
-        print("other_job was cancelled!")
-
-def handler(loop, context):
-    exception = context.get("exception")
-    if exception:
-        print(f"Stopping loop due to error: {exception}")
-    loop.stop()
-
-if __name__ == "__main__": 
-    import uvloop
-    uvloop.install()
-    aiorun.logger.disabled = True
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    loop.set_exception_handler(handler)
-
-    try:
-        aiorun.run(init())
-    except Exception as e:
-        LOGGER("DeltaMusic").error(f"Bot berhenti karena error: {e}")
+if __name__ == "__main__":
+    loop.run_until_complete(init())
+    LOGGER("YukkiMusic").info("Stopping Yukki Music Bot! GoodBye")
