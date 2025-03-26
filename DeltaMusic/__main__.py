@@ -81,7 +81,7 @@ async def other_job():
 
 if __name__ == "__main__": 
     aiorun.logger.disabled = True  
-    aiorun.run(init())
+    aiorun.run(init)
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     loop.create_task(job())
